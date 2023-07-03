@@ -2,16 +2,13 @@ import React, { useState } from 'react';
 import { FormControl, FormControlLabel, Radio, RadioGroup, Select, MenuItem, Button } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import FormLabel from '@mui/material/FormLabel';
-import { Slider, Typography } from '@mui/material';
 
 import './form.scss';
 
+import SliderTextFieldForm from './SliderTextFieldForm';
 
-const StyledSlider = styled(Slider)({
-  color: 'primary',
-  '& .MuiSlider-track': {
-    display: 'none',
-  },
+const StyledRadioGroup = styled(RadioGroup)({
+  flexDirection: 'row',
 });
 
 const StyledFormControl = styled(FormControl)({
@@ -26,14 +23,6 @@ const StyledButton = styled(Button)({
 const Entretien = () => {
   const [selectedOption1, setSelectedOption1] = useState('differencie');
   const [selectedOption2, setSelectedOption2] = useState('lutte');
-  const [selectedValue1, setSelectedValue1] = useState('classique');
-  const [selectedValue2, setSelectedValue2] = useState('pas_valorisation');
-
-  const [sliderValue, setSliderValue] = useState(50);
-
-  const handleSliderChange = (event, newValue) => {
-    setSliderValue(newValue);
-  };
 
   const handleOption1Change = (event) => {
     setSelectedOption1(event.target.value);
@@ -43,29 +32,23 @@ const Entretien = () => {
     setSelectedOption2(event.target.value);
   };
 
-  const handleValue1Change = (event) => {
-    setSelectedValue1(event.target.value);
-  };
-
-  const handleValue2Change = (event) => {
-    setSelectedValue2(event.target.value);
-  };
-
   const handleSubmit = (event) => {
     event.preventDefault();
+
     console.log('selectedOption1', selectedOption1);
     console.log('selectedOption2', selectedOption2);
-    console.log('selectedValue1', selectedValue1);
-    console.log('selectedValue2', selectedValue2);
-    console.log('sliderValue', sliderValue);
+
+    console.log('submit');
   };
 
   return (
     <div className='entretien'>
       <h1>Entretien</h1>
+
+      <h3>Options d'entretien</h3>
       <StyledFormControl component="fieldset">
         <FormLabel component="legend">Fauchage différencié</FormLabel>
-        <RadioGroup
+        <StyledRadioGroup
           aria-label="Options"
           name="fauchage_differencie"
           value={selectedOption1}
@@ -73,12 +56,10 @@ const Entretien = () => {
         >
           <FormControlLabel value="differencie" control={<Radio />} label="Oui" />
           <FormControlLabel value="non_differencie" control={<Radio />} label="Non" />
-        </RadioGroup>
-      </StyledFormControl>
+        </StyledRadioGroup>
 
-      <StyledFormControl component="fieldset">
         <FormLabel component="legend">Lutte contre les plantes invasives</FormLabel>
-        <RadioGroup
+        <StyledRadioGroup
           aria-label="Options"
           name="lutte_plantes_invasives"
           value={selectedOption2}
@@ -86,53 +67,27 @@ const Entretien = () => {
         >
           <FormControlLabel value="lutte" control={<Radio />} label="Oui" />
           <FormControlLabel value="non_lutte" control={<Radio />} label="Non" />
-        </RadioGroup>
+        </StyledRadioGroup>
       </StyledFormControl>
 
-      <StyledFormControl>
-      <FormLabel component="legend">Type de fauchage</FormLabel>
-        <Select
-          value={selectedValue1}
-          onChange={handleValue1Change}
-          displayEmpty
-          inputProps={{ 'aria-label': 'Value 1' }}
-        >
-          <MenuItem value="classique">
-            <em>Fauchage classique</em>
-          </MenuItem>
-          <MenuItem value="collecte">Fauchage avec collecte</MenuItem>
-          <MenuItem value="damier">Fauchage en damier</MenuItem>
-        </Select>
-      </StyledFormControl>
 
-      <StyledFormControl>
-      <FormLabel component="legend">Valorisation de l'herbe</FormLabel>
-        <Select
-          value={selectedValue2}
-          onChange={handleValue2Change}
-          displayEmpty
-          inputProps={{ 'aria-label': 'Value 2' }}
-        >
-          <MenuItem value="pas_valorisation">
-            <em>Pas de Valorisation</em>
-          </MenuItem>
-          <MenuItem value="methanisation">Méthanisation</MenuItem>
-          <MenuItem value="compostage">Compostage</MenuItem>
-        </Select>
-      </StyledFormControl>
+      <h3 component="legend">Type de fauchage</h3>
 
-      <StyledFormControl>
-        <FormLabel component="legend">Hauteur de fauche : {sliderValue} </FormLabel>
-      <StyledSlider
-        value={sliderValue}
-        onChange={handleSliderChange}
-        aria-labelledby="slider-label"
-        valueLabelDisplay="auto"
-        step={1}
-        min={0}
-        max={100}
-      />
-      </StyledFormControl>
+      <FormLabel component="legend">Fauchage avec collecte (en %)</FormLabel>
+      <SliderTextFieldForm />
+      <FormLabel component="legend">Fauchage en damier (en %)</FormLabel>
+      <SliderTextFieldForm />
+
+      <h3>Valorisation de l'herbe</h3>
+
+      <FormLabel component="legend">Méthanisation (en %)</FormLabel>
+      <SliderTextFieldForm />
+
+      <FormLabel component="legend">Compostage (en %)</FormLabel>
+      <SliderTextFieldForm />
+      
+      <FormLabel component="legend">Hauteur de fauche (en cm)</FormLabel>
+      <SliderTextFieldForm />
 
 
       <StyledButton className='submitBtn' variant="contained" color="primary" onClick={handleSubmit}>

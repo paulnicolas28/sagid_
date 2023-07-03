@@ -1,12 +1,13 @@
 import React from "react";
 
 import Entretien from "../form/Entretien";
+import ChoixTerri from "../form/ChoixTerri";
 
 
 const Blank = () => {
   return (
     <div>
-      <Entretien />
+      <ChoixTerri />
     </div>
   );
 };

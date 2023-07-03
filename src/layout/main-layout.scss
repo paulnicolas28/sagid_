@@ -5,7 +5,7 @@
 
     @include tablet {
         padding-left: 0;
-        width: 100vw;
+        width: 50vw;
     }
 
     &__content {
@@ -21,6 +21,12 @@
         }
     }
 }
+
+.main__content{
+    height: 90%;
+    margin: 0 auto;
+}
+
 
 .sidebar-open .main__content {
     height: 100vh;

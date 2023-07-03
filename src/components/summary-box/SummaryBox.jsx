@@ -16,6 +16,8 @@ import {
     
 } from 'chart.js'
 
+import CircleBox from "./CircleBox";
+
 ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -51,7 +53,7 @@ export const SummaryBoxIndicateurs = ({ item }) => {
             <div className='summary-box'>
                 <div className="summary-box__info__indicateur">
                 <div className="summary-box__info__indicateur__title">
-                    {item.value}
+                    <CircleBox item={item}/>
                 </div>
                 <div className="summary-box__info__indicateur__value">
                 {item.title}
@@ -68,18 +70,19 @@ export const SummaryBoxNotes = ({ item }) => {
     return (
         <Box>
             <div className='summary-box'>
-                <div className="summary-box__info">
-                    <div className="summary-box__info__title">
-                        <div> Score de {item.value}</div>
-                    </div>
-                    <div className="summary-box__info__value">
-                        {item.title}
-                    </div>
+                <div className="summary-box__info__indicateur">
+                <div className="summary-box__info__indicateur__title">
+                {item.value}
+                </div>
+                <div className="summary-box__info__indicateur__value">
+                {item.title}
+                </div>
                 </div>
             </div>
         </Box>
     )
 }
+
 
 
 export const SummaryBoxSpecial = ({ item }) => {

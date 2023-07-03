@@ -6,11 +6,11 @@ import { faSmog } from '@fortawesome/free-solid-svg-icons'
 
 import "./ges.scss";
 
-const GESSmallCard = () => {
+const GESMainCard = () => {
   return (
     <div className="ges">
       <FontAwesomeIcon icon={faSmog}/>
-      <h3>Aspect émission de GES</h3>
+      <h1>Aspect émission de GES</h1>
       <div className="row">
         <h3>Bilan Global</h3>
         <div className="col-12 col-md-12">
@@ -28,4 +28,4 @@ const GESSmallCard = () => {
   );
 };
 
-export default GESSmallCard;
+export default GESMainCard;

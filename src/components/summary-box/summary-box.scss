@@ -18,7 +18,7 @@
         flex-direction: column;
 
         &__title {
-            font-size: $fontSizeMedium;
+            font-size: $fontSizeSmall;
             font-weight: 700;
             line-height: 1.2;
 
@@ -30,7 +30,7 @@
 
         &__value {
             font-weight: 700;
-            font-size: $fontSizeLarge;
+            font-size: $fontSizeSmall;
             color: $black;
         }
     }
@@ -52,7 +52,7 @@
 
         &__value {
             font-weight: 700;
-            font-size: $fontSizeNormal;
+            font-size: $fontSizeSmall;
             color: $black;
             text-align: center;
         }

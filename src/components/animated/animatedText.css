@@ -1,0 +1,51 @@
+.animation-container {
+  display: flex;
+  align-items: center;
+}
+
+.text-container {
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.old-text {
+  font-size: 18px;
+  color: #888;
+  text-decoration: line-through;
+}
+
+.new-text {
+  font-size: 18px;
+  color: #2ecc71;
+  }
+
+.arrow-container {
+  display: flex;
+  align-items: center;
+}
+
+.arrow {
+  font-size: 20px;
+  margin: 0 10px;
+  color: red;
+  opacity: 0;
+}
+
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 500ms ease-out;
+}
