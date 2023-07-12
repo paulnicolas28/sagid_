@@ -40,48 +40,6 @@ var couts = {
     "environnement_transport" : 0,
 };
 
-var planFauche = JSON.parse(localStorage.getItem("planFauche#" + currentEvaluation.planFauche));
-var activite = null;
-
-var territoires = [];
-currentEvaluation.territoires.forEach(
-    function(value){
-        territoires.push(JSON.parse(localStorage.getItem("territoire#" + value)));
-    }
-);
-
-if(currentEvaluation != null){
-    territoires.forEach(
-        function(territoire_value){
-            var routes = [];
-
-            territoire_value.routes.forEach(
-                function(value){
-                    routes.push(JSON.parse(localStorage.getItem("route#" + value)));
-                }
-            );
-            routes.forEach(
-                function(route_value){
-                    planFauche.activites.forEach(
-                        function(activite_value){
-                            activite = JSON.parse(localStorage.getItem("activite#" + activite_value));
-                            if (document.getElementById("activiteSelect") != null){
-                                document.getElementById("activiteSelect").innerHTML += "<option>"+ activite.nom + " sur " + route_value.nom +"</option>";
-                            }
-
-                            switch(activite.nomType){
-                                case "Fauchage classique":
-                                    calculCoutFauchageClassique(activite.type, route_value);            
-                            }
-                        }
-                    );
-
-                }
-            );
-
-        }
-    );
-}
 
 function calculCoutFauchageClassique(activite, route){
 

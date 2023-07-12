@@ -4,14 +4,18 @@ import SummaryBox, {
   SummaryBoxNotes,
   SummaryBoxIndicateurs,
   SummaryBoxSpecial,
+  SummaryBoxSpecialEconomique,
 } from "../summary-box/SummaryBox";
 import Box from "../box/Box";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEuroSign } from "@fortawesome/free-solid-svg-icons";
 
+import { useEffect, useState } from "react";
+
 import "./economique.scss";
 
 const EcoSystMainCard = () => {
+
   return (
     <div className="economique">
       <FontAwesomeIcon icon={faEuroSign} />
@@ -27,7 +31,7 @@ const EcoSystMainCard = () => {
               <SummaryBoxNotes item={data.indicateurs_economiques[4]} />
             </div>
             <div className="col-6 hide-md">
-              <SummaryBoxSpecial item={data.revenueSummary} />
+              <SummaryBoxSpecialEconomique item={data.coutsEconomiques} />
             </div>
           </div>
         </div>

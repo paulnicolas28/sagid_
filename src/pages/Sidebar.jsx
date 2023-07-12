@@ -3,22 +3,41 @@ import { Tabs, Tab, Typography } from '@mui/material';
 import Entretien from '../form/Entretien';
 import Territoire from '../form/Territoire';
 
-const Sidebar = () => {
+import styled from '@emotion/styled';
+
+  // Custom styles for the Tabs component
+  const StyledTabs = styled(Tabs)({
+    backgroundColor: '#green',
+  });
+  
+  // Custom styles for the Tab component
+  const StyledTab = styled(Tab)(({ theme }) => ({
+    '& .MuiTab-wrapper': {
+      color: "green",
+    },
+    '&.Mui-selected': {
+      backgroundColor: '#green',
+    },
+  }));
+
+const Sidebar = ( {currentData, setCurrentData} ) => {
   const [activeTab, setActiveTab] = useState(0);
 
   const handleTabChange = (event, newValue) => {
     setActiveTab(newValue);
   };
 
+
+
   return (
     <div>
-      <Tabs value={activeTab} onChange={handleTabChange}>
-        <Tab label="Plan d'entretien" />
-        <Tab label="Territoire" />
-      </Tabs>
+      <StyledTabs value={activeTab} onChange={handleTabChange}>
+        <StyledTab label="Plan d'entretien"  />
+        <StyledTab label="Territoire" />
+      </StyledTabs>
       {activeTab === 0 && (
         <Typography variant="h6" component="div" mt={2}>
-          <Entretien/>
+          <Entretien currentData={currentData} setCurrentData={setCurrentData}/>
         </Typography>
       )}
       {activeTab === 1 && (

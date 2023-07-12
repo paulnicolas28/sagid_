@@ -28,13 +28,16 @@ import { Button } from "@mui/material";
 import EcoSystSmallCard from "../components/ecosystemique/EcoSystSmallCard";
 import GESMainCard from "../components/ges/GESMainCard";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLeaf } from '@fortawesome/free-solid-svg-icons'
-import { faEuroSign } from '@fortawesome/free-solid-svg-icons'
-import { faSmog } from '@fortawesome/free-solid-svg-icons'
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLeaf } from "@fortawesome/free-solid-svg-icons";
+import { faEuroSign } from "@fortawesome/free-solid-svg-icons";
+import { faSmog } from "@fortawesome/free-solid-svg-icons";
 
 import "./dashboard.scss";
+import { Tabs } from "@material-ui/core";
+import { Tab } from "@material-ui/core";
+
+import styled from "@emotion/styled";
 
 ChartJS.register(
   CategoryScale,
@@ -46,86 +49,121 @@ ChartJS.register(
   Legend
 );
 
+// Custom styles for the Tabs component
+const StyledTabs = styled(Tabs)({
+  backgroundColor: '#green',
+});
+
+// Custom styles for the Tab component
+const StyledTab = styled(Tab)(({ theme }) => ({
+  '& .MuiTab-wrapper': {
+    color: "green",
+  },
+  '&.Mui-selected': {
+    backgroundColor: '#green',
+  },
+}));
+
 const Dashboard2 = () => {
-  const [activeMainComponent, setActiveMainComponent] = useState(
-    <EcoSystMainCard />
-  );
-  const [activeLeftComponent, setActiveLeftComponent] = useState(
-    <EcoNomiqueSmallCard />
-  );
-  const [activeRightComponent, setActiveRightComponent] = useState(
-    <GESSmallCard />
-  );
+  const [currentData, setCurrentData] = useState(data);
 
-  const [selected1, setSelected1] = useState(false);
-  const [selected2, setSelected2] = useState(false);
-  const [selected3, setSelected3] = useState(false);
+  const [selectedTab, setSelectedTab] = useState("ecosystemique");
 
-  const handleLoadComponent1 = () => {
-    setActiveMainComponent(<EcoSystMainCard />);
-    setActiveLeftComponent(<EcoNomiqueSmallCard />);
-    setActiveRightComponent(<GESSmallCard />);
-    setSelected1(true);
-    setSelected2(false);
-    setSelected3(false);
+  const handleTabChange = (event, newValue) => {
+    setSelectedTab(newValue);
   };
-
-  const handleLoadComponent2 = () => {
-    setActiveMainComponent(<EcoNomiqueMainCard />);
-    setActiveLeftComponent(<EcoSystSmallCard />);
-    setActiveRightComponent(<GESSmallCard />);
-    setSelected2(true);
-    setSelected1(false);
-    setSelected3(false);
-  };
-
-  const handleLoadComponent3 = () => {
-    setActiveMainComponent(<GESMainCard />);
-    setActiveLeftComponent(<EcoSystSmallCard />);
-    setActiveRightComponent(<EcoNomiqueSmallCard />);
-    setSelected3(true);
-    setSelected1(false);
-    setSelected2(false);
-  };
+  
 
   return (
     <div className="dashboardwrapper">
       <DashboardWrapper>
         <DashboardWrapperMain>
           <div className="row">
-                <Button
-                  variant={selected1 ? "contained" : "outlined"}
-                  onClick={handleLoadComponent1}
-                >
-                <FontAwesomeIcon icon={faLeaf}/>
-                </Button>
-                <Button
-                  variant={selected2 ? "contained" : "outlined"}
-                  onClick={handleLoadComponent2}
-                >
-                <FontAwesomeIcon icon={faEuroSign}/>
-                </Button>
-                <Button
-                  variant={selected3 ? "contained" : "outlined"}
-                  onClick={handleLoadComponent3}
-                >
-                <FontAwesomeIcon icon={faSmog}/>
-                </Button>
-                </div>
-            <Box>
-              {activeMainComponent}
-            </Box>
-          <div className="row">
-            <div className="col-6">
-              <Box>{activeLeftComponent}</Box>
-            </div>
-            <div className="col-6">
-              <Box>{activeRightComponent}</Box>
-            </div>
+          <StyledTabs value={selectedTab} onChange={handleTabChange} aria-label="My Tabs">
+  <StyledTab
+    label="Ecosystémique"
+    value="ecosystemique"
+    icon={<FontAwesomeIcon icon={faLeaf} />}
+    onClick={() => setSelectedTab("ecosystemique")}
+  />
+  <StyledTab
+    label="Économique"
+    value="economique"
+    icon={<FontAwesomeIcon icon={faEuroSign} />}
+    onClick={() => setSelectedTab("economique")}
+  />
+  <StyledTab
+    label="GES"
+    value="ges"
+    icon={<FontAwesomeIcon icon={faSmog} />}
+    onClick={() => setSelectedTab("ges")}
+  />
+</StyledTabs>
+
           </div>
+
+          {selectedTab === "ecosystemique" && (
+            <div>
+              <Box>
+                <EcoSystMainCard currentData={currentData} />
+              </Box>
+              <div className="row">
+                <div className="col-6">
+                  <Box>
+                    <EcoNomiqueSmallCard currentData={currentData} />
+                  </Box>
+                </div>
+                <div className="col-6">
+                  <Box>
+                    <GESSmallCard currentData={currentData} />
+                  </Box>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {selectedTab === "economique" && (
+            <div>
+              <Box>
+                <EcoNomiqueMainCard currentData={currentData} />
+              </Box>
+              <div className="row">
+                <div className="col-6">
+                  <Box>
+                    <EcoSystSmallCard currentData={currentData} />
+                  </Box>
+                </div>
+                <div className="col-6">
+                  <Box>
+                    <GESSmallCard currentData={currentData}/>
+                  </Box>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {selectedTab === "ges" && (
+            <div>
+              <Box>
+                <GESMainCard currentData={currentData}/>
+              </Box>
+              <div className="row">
+                <div className="col-6">
+                  <Box>
+                    <EcoSystSmallCard currentData={currentData}/>
+                  </Box>
+                </div>
+                <div className="col-6">
+                  <Box>
+                    <EcoNomiqueSmallCard  currentData={currentData}/>
+                  </Box>
+                </div>
+              </div>
+            </div>
+          )}
         </DashboardWrapperMain>
         <DashboardWrapperRight>
-          <Sidebar />
+          <Sidebar currentData={currentData} setCurrentData={setCurrentData} />
         </DashboardWrapperRight>
       </DashboardWrapper>
     </div>

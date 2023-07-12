@@ -1,9 +1,6 @@
-import images from "./images"
-
 const data = {
     user: {
         name: 'SAGID',
-        img: images.avt
     },
     summary: [
         {
@@ -32,11 +29,11 @@ const data = {
         }
     ],
     revenueSummary: {
-        title: 'Revenue',
-        value: '$678',
+        title: 'Emission par activité',
+        value: 400 + ' tCO2e',
         chartData: {
             labels: ['May', 'Jun', 'July', 'Aug', 'May', 'Jun', 'July', 'Aug'],
-            data: [300, 300, 280, 380, 200, 300, 280, 350]
+            data: [300, 150, 280, 380, 200, 300, 280]
         }
     },
     overall: [
@@ -80,8 +77,40 @@ const data = {
         data: [250, 200, 300, 280, 100, 220, 310, 190, 200, 120, 250, 350]
     },
 
+    coutsEconomiques: {
+        title: 'Coûts économiques',
+        value: '3.261.000€',
+        chartData: {
+            labels: ['2023', '2024', '2025'],
+            data: [300, 300, 280]
+        }        
+    },
+            
+    indicateurs_economiques: [
+        {
+            title:"de coûts d'entretien",
+            value: 3261000 + "€"
+        },
+        {
+            title:"par km entretenu",
+            value: 344 + "€"
+        },
+        {
+            title:"de coûts liés au fauchage",
+            value: 1845000 + "€"
+        },
+        {
+            title:"de coûts de traitement des déchets",
+            value: 421000 + "€"
+        },
+        {
+            title:"de revenus dus à la valorisation des déchets",
+            value: 781000 + "€"
+        },
+    ],
+
     notes_ecosysteme: [
-        { title : 'pour la capacité du réseau à fournir des services écosystémiques', value : 62 },
+        { title : 'pour la capacité du réseau à fournir des services écosystémiques', value : 20 },
         { title : "pour l'impact de l'entretien sur la capacité", value : 28 },
     ],
 
@@ -116,29 +145,7 @@ const data = {
             value: 'G'
         }
     ],
-    
-    indicateurs_economiques: [
-        {
-            title:"de coûts d'entretien",
-            value: 3261000 + "€"
-        },
-        {
-            title:"par km entretenu",
-            value: 344
-        },
-        {
-            title:"de coûts liés au fauchage",
-            value: 1845000 + "€"
-        },
-        {
-            title:"de coûts de traitement des déchets",
-            value: 421000 + "€"
-        },
-        {
-            title:"de revenus dus à la valorisation des déchets",
-            value: 781000 + "€"
-        },
-    ],
+
 
     indicateurs_ges: [
         {

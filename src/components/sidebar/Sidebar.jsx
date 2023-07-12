@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './sidebar.scss'
 import { Link, useLocation } from 'react-router-dom'
-import { images } from '../../constants'
 import sidebarNav from '../../configs/sidebarNav'
 
 const Sidebar = () => {
@@ -26,7 +25,6 @@ const Sidebar = () => {
     return (
         <div className='sidebar'>
             <div className="sidebar__logo">
-                <img src={images.logo} alt="" />
                 <div className="sidebar-close" onClick={closeSidebar}>
                     <i className='bx bx-x'></i>
                 </div>
@@ -36,10 +34,8 @@ const Sidebar = () => {
                     sidebarNav.map((nav, index) => (
                         <Link to={nav.link} key={`nav-${index}`} className={`sidebar__menu__item ${activeIndex === index && 'active'}`} onClick={closeSidebar}>
                             <div className="sidebar__menu__item__icon">
-                                {nav.icon}
                             </div>
                             <div className="sidebar__menu__item__txt">
-                                {nav.text}
                             </div>
                         </Link>
                     ))

@@ -1,6 +1,6 @@
 import React from "react";
 import { data } from "../../constants";
-import SummaryBox, { SummaryBoxIndicateurs, SummaryBoxSpecial, SummaryBoxNotes } from "../summary-box/SummaryBox";
+import SummaryBox, { SummaryBoxIndicateurs, SummaryBoxSpecialGES, SummaryBoxNotes } from "../summary-box/SummaryBox";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSmog } from '@fortawesome/free-solid-svg-icons'
 
@@ -19,7 +19,7 @@ const GESMainCard = () => {
             <SummaryBoxNotes item={data.indicateurs_ges[0]} />
           </div>
           <div className="col-6 hide-md">
-            <SummaryBoxSpecial item={data.revenueSummary} />
+            <SummaryBoxSpecialGES item={data.revenueSummary} />
           </div>
           </div>
         </div>

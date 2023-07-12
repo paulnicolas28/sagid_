@@ -3,7 +3,9 @@ import { TextField, Slider, Button } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import FormControl from "@mui/material/FormControl";
 
-const StyledSliSlidder = styled(Slider)({
+import {data } from '../constants'
+
+const StyledSlider = styled(Slider)({
   marginLeft: "1rem",
   color: "primary",
   "& .MuiSlider-track": {
@@ -12,7 +14,7 @@ const StyledSliSlidder = styled(Slider)({
 });
 
 const StyledNumberInput = styled(TextField)(({ theme }) => ({
-    width: "100px",
+  width: "100px",
   "& .MuiInputBase-input": {
     textAlign: "center",
   },
@@ -34,32 +36,26 @@ const StyledFormControl = styled(FormControl)({
   minWidth: "120px",
 });
 
-const SliderTextFieldForm = () => {
+const SliderTextFieldForm = ({ id, onChange }) => {
   const [sliderValue, setSliderValue] = useState(0);
   const [textFieldValue, setTextFieldValue] = useState("0");
 
   const handleSliderChange = (event, newValue) => {
     setSliderValue(newValue);
-    setTextFieldValue(newValue.toString()); // Update TextField value
+    setTextFieldValue(newValue.toString());
+    onChange(id, newValue);
   };
 
   const handleTextFieldChange = (event) => {
     setTextFieldValue(event.target.value);
     const parsedValue = parseInt(event.target.value);
     if (!isNaN(parsedValue)) {
-      setSliderValue(parsedValue); // Update Slider value
+      setSliderValue(parsedValue);
+      onChange(id, parsedValue);
     }
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Perform any desired logic with the submitted values
-    console.log("Slider value:", sliderValue);
-    console.log("TextField value:", textFieldValue);
-  };
-
   return (
-    <form onSubmit={handleSubmit}>
       <div className="row">
         <div className="col-6">
           <StyledFormControl>
@@ -73,7 +69,7 @@ const SliderTextFieldForm = () => {
         </div>
         <div className="col-6">
           <StyledFormControl>
-            <StyledSliSlidder
+            <StyledSlider
               value={sliderValue}
               onChange={handleSliderChange}
               min={0}
@@ -83,7 +79,6 @@ const SliderTextFieldForm = () => {
           </StyledFormControl>
         </div>
       </div>
-    </form>
   );
 };
 

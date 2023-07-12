@@ -5,17 +5,40 @@ import { data } from '../constants';
 
 import './form.scss';
 
-const StyledFormControl = styled('div')({
+const StyledFormControl = styled('div')(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
-  gap: '1rem',
-  maxWidth: '300px',
-  margin: 'auto'
-});
+  gap: '1.5rem', // Increase the gap for a cuter look
+  maxWidth: '600px', // Adjust the maximum width as needed
+  margin: 'auto',
+  minHeight: '60vh', // Adjust the height as needed
+  justifyContent: 'center',
+  alignItems: 'center',
+  padding: '2rem',
+  borderRadius: '10px',
+  backgroundColor: theme.palette.background.paper,
+  boxShadow: `0px 2px 4px ${theme.palette.primary.main}`,
+}));
 
-const StyledButton = styled(Button)({
-  marginTop: '1rem'
-});
+const StyledButton = styled(Button)(({ theme }) => ({
+  marginTop: '1.5rem', // Increase the top margin for a cuter look
+  borderRadius: '5px',
+  backgroundColor: theme.palette.primary.main,
+  color: theme.palette.primary.contrastText,
+  '&:hover': {
+    backgroundColor: theme.palette.primary.dark,
+  },
+}));
+
+const StyledSelect = styled(Select)(({ theme }) => ({
+  width: '300px',
+  padding: '10px', // Adjust the padding as needed
+  borderRadius: '5px',
+  backgroundColor: theme.palette.background.paper,
+  '& .MuiSelect-select': {
+    paddingRight: '30px', // Increase the right padding for wider Select components
+  },
+}));
 
 var regions = data.regions;
 
@@ -48,25 +71,26 @@ function ChoixTerri() {
 
   const redirectToPlan = () => {   
     navigate("/plan"); // Replace '/other-page' with the desired URL or path
-}
+  };
 
   return (
     <StyledFormControl className='form'>
       <FormControl>
         <FormLabel>Type</FormLabel>
-        <Select
+        <StyledSelect
           value={selectedType}
           onChange={handleTypeChange}
+          label="Type"
         >
           <MenuItem value="region">Région</MenuItem>
           <MenuItem value="department">Département</MenuItem>
-        </Select>
+        </StyledSelect>
       </FormControl>
 
       {selectedType === 'region' && (
         <FormControl>
           <FormLabel>Région</FormLabel>
-          <Select
+          <StyledSelect
             value={selectedRegion}
             onChange={handleRegionChange}
           >
@@ -75,14 +99,14 @@ function ChoixTerri() {
                 {region.region_name}
               </MenuItem>
             ))}
-          </Select>
+          </StyledSelect>
         </FormControl>
       )}
 
       {selectedType === 'department' && (
         <FormControl>
           <FormLabel>Région</FormLabel>
-          <Select
+          <StyledSelect
             value={selectedRegion}
             onChange={handleRegionChange}
           >
@@ -91,23 +115,23 @@ function ChoixTerri() {
                 {region.region_name}
               </MenuItem>
             ))}
-          </Select>
+          </StyledSelect>
         </FormControl>
       )}
 
       {selectedType === 'department' && selectedRegion && (
         <FormControl>
           <FormLabel>Département</FormLabel>
-          <Select
+          <StyledSelect
             value={selectedDepartment}
             onChange={handleDepartmentChange}
           >
             {getFilteredDepartments(selectedRegion).map((department, index) => (
               <MenuItem key={index} value={department.num_dep}>
-                {department.num_dep + " - " + department.dep_name}
+                {department.num_dep + ' - ' + department.dep_name}
               </MenuItem>
             ))}
-          </Select>
+          </StyledSelect>
         </FormControl>
       )}
 
