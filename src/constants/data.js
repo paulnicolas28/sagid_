@@ -33,7 +33,7 @@ const data = {
         value: 400 + ' tCO2e',
         chartData: {
             labels: ['May', 'Jun', 'July', 'Aug', 'May', 'Jun', 'July', 'Aug'],
-            data: [300, 150, 280, 380, 200, 300, 280]
+            data: [1, 2, 3, 1, 5, 4, 3]
         }
     },
     overall: [
@@ -367,5 +367,10 @@ const data = {
         }
     ]
 }
+
+//const jsonData = JSON.stringify(data, null, 2);
+
+//const fs = require('fs');
+//fs.writeFileSync('data.json', jsonData);
 
 export default data

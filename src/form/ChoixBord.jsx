@@ -12,7 +12,7 @@ const StyledContainer = styled('div')({
 });
 
 const StyledCard = styled(Card)({
-  maxWidth: 200,
+  maxWidth: 150,
   margin: '1rem',
 });
 

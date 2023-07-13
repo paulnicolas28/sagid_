@@ -51,16 +51,16 @@ ChartJS.register(
 
 // Custom styles for the Tabs component
 const StyledTabs = styled(Tabs)({
-  backgroundColor: '#green',
+  backgroundColor: "#green",
 });
 
 // Custom styles for the Tab component
 const StyledTab = styled(Tab)(({ theme }) => ({
-  '& .MuiTab-wrapper': {
+  "& .MuiTab-wrapper": {
     color: "green",
   },
-  '&.Mui-selected': {
-    backgroundColor: '#green',
+  "&.Mui-selected": {
+    backgroundColor: "#green",
   },
 }));
 
@@ -72,34 +72,36 @@ const Dashboard2 = () => {
   const handleTabChange = (event, newValue) => {
     setSelectedTab(newValue);
   };
-  
 
   return (
     <div className="dashboardwrapper">
       <DashboardWrapper>
         <DashboardWrapperMain>
           <div className="row">
-          <StyledTabs value={selectedTab} onChange={handleTabChange} aria-label="My Tabs">
-  <StyledTab
-    label="Ecosystémique"
-    value="ecosystemique"
-    icon={<FontAwesomeIcon icon={faLeaf} />}
-    onClick={() => setSelectedTab("ecosystemique")}
-  />
-  <StyledTab
-    label="Économique"
-    value="economique"
-    icon={<FontAwesomeIcon icon={faEuroSign} />}
-    onClick={() => setSelectedTab("economique")}
-  />
-  <StyledTab
-    label="GES"
-    value="ges"
-    icon={<FontAwesomeIcon icon={faSmog} />}
-    onClick={() => setSelectedTab("ges")}
-  />
-</StyledTabs>
-
+            <StyledTabs
+              value={selectedTab}
+              onChange={handleTabChange}
+              aria-label="My Tabs"
+            >
+              <StyledTab
+                label="Ecosystémique"
+                value="ecosystemique"
+                icon={<FontAwesomeIcon icon={faLeaf} />}
+                onClick={() => setSelectedTab("ecosystemique")}
+              />
+              <StyledTab
+                label="Économique"
+                value="economique"
+                icon={<FontAwesomeIcon icon={faEuroSign} />}
+                onClick={() => setSelectedTab("economique")}
+              />
+              <StyledTab
+                label="GES"
+                value="ges"
+                icon={<FontAwesomeIcon icon={faSmog} />}
+                onClick={() => setSelectedTab("ges")}
+              />
+            </StyledTabs>
           </div>
 
           {selectedTab === "ecosystemique" && (
@@ -135,7 +137,7 @@ const Dashboard2 = () => {
                 </div>
                 <div className="col-6">
                   <Box>
-                    <GESSmallCard currentData={currentData}/>
+                    <GESSmallCard currentData={currentData} />
                   </Box>
                 </div>
               </div>
@@ -145,17 +147,17 @@ const Dashboard2 = () => {
           {selectedTab === "ges" && (
             <div>
               <Box>
-                <GESMainCard currentData={currentData}/>
+                <GESMainCard currentData={currentData} />
               </Box>
               <div className="row">
                 <div className="col-6">
                   <Box>
-                    <EcoSystSmallCard currentData={currentData}/>
+                    <EcoSystSmallCard currentData={currentData} />
                   </Box>
                 </div>
                 <div className="col-6">
                   <Box>
-                    <EcoNomiqueSmallCard  currentData={currentData}/>
+                    <EcoNomiqueSmallCard currentData={currentData} />
                   </Box>
                 </div>
               </div>
