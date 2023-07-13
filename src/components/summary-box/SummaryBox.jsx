@@ -19,6 +19,7 @@ import {
     
 } from 'chart.js'
 
+import { Button } from '@mui/material'
 import CircleBox from "./CircleBox";
 
 ChartJS.register(
@@ -81,6 +82,27 @@ export const SummaryBoxNotes = ({ item }) => {
         </Box>
     )
 }
+
+export const SummaryBoxNotesBtn = ({ item }) => {
+    return (
+        <Box>
+            <div className='summary-box'>
+                <div className="summary-box__info__indicateur">
+                <div className="summary-box__info__indicateur__title">
+                {item.value}
+                </div>
+                <div className="summary-box__info__indicateur__value">
+                {item.title}
+                </div>
+                </div>
+                <Button variant="contained" color="success">+</Button>
+            </div>
+        </Box>
+    )
+}
+
+
+
 export const SummaryBoxSpecialGES = ({ item }) => {
    const chartOptions = {
         responsive: true,
@@ -133,7 +155,7 @@ export const SummaryBoxSpecialGES = ({ item }) => {
         </Box>
     )
 }
-export const SummaryBoxSpecialEconomique = ({ item }) => {
+export const SummaryBoxSpecialEconomique = ({ item, widthGiven }) => {
     const chartOptions = {
          responsive: true,
          scales: {
@@ -179,7 +201,7 @@ export const SummaryBoxSpecialEconomique = ({ item }) => {
                      {item.value}
                  </div>
                  <div className="summary-box-special__chart">
-                     <Bar options={chartOptions} data={chartData} width={`250px`} />
+                     <Bar options={chartOptions} data={chartData} width={widthGiven} />
                  </div>
              </div>
          </Box>

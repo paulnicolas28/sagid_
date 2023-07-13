@@ -21,7 +21,7 @@ const EcoNomiqueSmallCard = () => {
             <SummaryBoxNotes item={data.indicateurs_economiques[1]} />
           </div>
           <div className="col-6 hide-md">
-            <SummaryBoxSpecialEconomique item={data.coutsEconomiques} />
+            <SummaryBoxSpecialEconomique item={data.coutsEconomiques}  widthGiven={"250px"}/>
           </div>
           </div>
         </div>
