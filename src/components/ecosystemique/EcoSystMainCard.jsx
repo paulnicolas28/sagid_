@@ -1,5 +1,4 @@
 import React from "react";
-import { data } from "../../constants";
 import SummaryBox, {
   SummaryBoxNotes,
   SummaryBoxIndicateurs,
@@ -33,7 +32,7 @@ const EcoSystMainCard = ({ currentData }) => {
             </Box>
             <Box>
               <div className="row">
-                {data.indicateurs_ecosysteme.map((item, index) => (
+                {currentData.indicateurs_ecosysteme.map((item, index) => (
                   <div
                     key={`summary-${index}`}
                     className="col-3 col-md-4 col-sm-12 mb"

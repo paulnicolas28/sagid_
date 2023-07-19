@@ -1,12 +1,11 @@
 import React from "react";
-import { data } from "../../constants";
 import SummaryBox, { SummaryBoxIndicateurs, SummaryBoxSpecialGES, SummaryBoxNotesBtn } from "../summary-box/SummaryBox";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSmog } from '@fortawesome/free-solid-svg-icons'
 
 import "./ges.scss";
 
-const GESMainCard = () => {
+const GESMainCard = ( {currentData} ) => {
   return (
     <div className="economique">
       <FontAwesomeIcon icon={faSmog} />
@@ -15,10 +14,10 @@ const GESMainCard = () => {
         <div className="col-12 col-md-12">
           <div className="row">
             <div className="col-6 hide-md">
-              <SummaryBoxNotesBtn item={data.indicateurs_ges[0]} /> 
+              <SummaryBoxNotesBtn item={currentData.indicateurs_ges[0]} /> 
             </div>
             <div className="col-6 hide-md">
-              <SummaryBoxSpecialGES item={data.revenueSummary} widthGiven={"500px"}/>
+              <SummaryBoxSpecialGES item={currentData.revenueSummary} widthGiven={"500px"}/>
             </div>
           </div>
         </div>

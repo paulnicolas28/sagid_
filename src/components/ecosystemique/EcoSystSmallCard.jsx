@@ -1,5 +1,4 @@
 import React from "react";
-import { data } from "../../constants";
 import SummaryBox, { SummaryBoxIndicateurs, SummaryBoxSpecialEcosystemique}  from "../summary-box/SummaryBox";
 import Box from "../box/Box";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -31,7 +30,7 @@ const EcoSystSmallCard = ({ currentData }) => {
           </div>
           <div className="col-6 hide-md">
             <h3>Impacts sur les services écosystémiques des bords de route</h3>
-            <SummaryBoxSpecialEcosystemique item={currentData.revenueSummary} widthGiven={"250px"}/>
+            <SummaryBoxSpecialEcosystemique item={currentData.revenueSummary} widthGiven={"500px"}/>
           </div>
         </div>
       </div>

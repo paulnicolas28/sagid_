@@ -1,5 +1,4 @@
 import React from "react";
-import { data } from "../../constants";
 import SummaryBox, { SummaryBoxIndicateurs, SummaryBoxSpecial, SummaryBoxNotes,  SummaryBoxSpecialEconomique  } from "../summary-box/SummaryBox";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEuroSign } from '@fortawesome/free-solid-svg-icons'
@@ -7,7 +6,7 @@ import { faEuroSign } from '@fortawesome/free-solid-svg-icons'
 import "./economique.scss";
 
 
-const EcoNomiqueSmallCard = () => {
+const EcoNomiqueSmallCard = ({ currentData }) => {
   return (
     <div className="economique">
         <FontAwesomeIcon icon={faEuroSign}/>
@@ -17,11 +16,11 @@ const EcoNomiqueSmallCard = () => {
         <div className="col-12 col-md-12">
           <div className="row">
           <div className="col-6 hide-md">
-            <SummaryBoxNotes item={data.indicateurs_economiques[0]} />
-            <SummaryBoxNotes item={data.indicateurs_economiques[1]} />
+            <SummaryBoxNotes item={currentData.indicateurs_economiques[0]} />
+            <SummaryBoxNotes item={currentData.indicateurs_economiques[1]} />
           </div>
           <div className="col-6 hide-md">
-            <SummaryBoxSpecialEconomique item={data.coutsEconomiques}  widthGiven={"250px"}/>
+            <SummaryBoxSpecialEconomique item={currentData.coutsEconomiques}  widthGiven={"250px"}/>
           </div>
           </div>
         </div>

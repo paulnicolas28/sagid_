@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { styled, Card, CardContent, Typography } from '@mui/material';
-import roadImage1 from './Arbres-bord-de-route.jpg';
-import roadImage2 from './81731-fosse-02.jpeg';
-import roadImage3 from './bord-de-route-gestion-differenciee-prairie-2.jpg';
+import roadImage1 from '../assets/images/Arbres-bord-de-route.jpg';
+import roadImage2 from '../assets/images/81731-fosse-02.jpeg';
+import roadImage3 from '../assets/images/bord-de-route-gestion-differenciee-prairie-2.jpg';
 
 const StyledContainer = styled('div')({
   display: 'flex',

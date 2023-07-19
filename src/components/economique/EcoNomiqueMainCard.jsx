@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { data } from "../../constants";
 import { SummaryBoxSpecialEconomique } from "../summary-box/SummaryBox";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEuroSign } from "@fortawesome/free-solid-svg-icons";
@@ -18,7 +17,7 @@ const StyledTab = styled(Tab)(({ theme }) => ({
   },
 }));
 
-const EcoSystMainCard = () => {
+const EcoSystMainCard = ({ currentData }) => {
   const [activeTab, setActiveTab] = useState(0);
 
   const handleTabChange = (event, newValue) => {
@@ -41,23 +40,23 @@ const EcoSystMainCard = () => {
             >
               <StyledTab
                 label={
-                  data.indicateurs_economiques[0].value +
+                  currentData.indicateurs_economiques[0].value +
                   "  " +
-                  data.indicateurs_economiques[0].title
+                  currentData.indicateurs_economiques[0].title
                 }
               />
               <StyledTab
                 label={
-                  data.indicateurs_economiques[1].value +
+                  currentData.indicateurs_economiques[1].value +
                   "  " +
-                  data.indicateurs_economiques[1].title
+                  currentData.indicateurs_economiques[1].title
                 }
               />
               <StyledTab
                 label={
-                  data.indicateurs_economiques[2].value +
+                  currentData.indicateurs_economiques[2].value +
                   "  " +
-                  data.indicateurs_economiques[2].title
+                  currentData.indicateurs_economiques[2].title
                 }
               />
             </Tabs>
@@ -65,19 +64,19 @@ const EcoSystMainCard = () => {
           <div className="col-9">
             {activeTab === 0 && (
               <SummaryBoxSpecialEconomique
-                item={data.coutsEconomiques}
+                item={currentData.coutsEconomiques}
                 widthGiven={"500px"}
               />
             )}
             {activeTab === 1 && (
               <SummaryBoxSpecialEconomique
-                item={data.revenueSummary}
+                item={currentData.revenueSummary}
                 widthGiven={"500px"}
               />
             )}
             {activeTab === 2 && (
               <SummaryBoxSpecialEconomique
-                item={data.coutsEconomiques}
+                item={currentData.coutsEconomiques}
                 widthGiven={"500px"}
               />
             )}

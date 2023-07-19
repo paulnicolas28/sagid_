@@ -64,7 +64,7 @@ const StyledTab = styled(Tab)(({ theme }) => ({
   },
 }));
 
-const Dashboard2 = () => {
+const Dashboard = () => {
   const [currentData, setCurrentData] = useState(data);
 
   const [selectedTab, setSelectedTab] = useState("ecosystemique");
@@ -172,4 +172,4 @@ const Dashboard2 = () => {
   );
 };
 
-export default Dashboard2;
+export default Dashboard;
