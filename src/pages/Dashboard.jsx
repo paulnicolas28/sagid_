@@ -39,6 +39,8 @@ import { Tab } from "@material-ui/core";
 
 import styled from "@emotion/styled";
 
+import jsonData from "../constants/data.json" // Adjust the path if needed
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -65,7 +67,7 @@ const StyledTab = styled(Tab)(({ theme }) => ({
 }));
 
 const Dashboard = () => {
-  const [currentData, setCurrentData] = useState(data);
+  const [currentData, setCurrentData] = useState(jsonData);
 
   const [selectedTab, setSelectedTab] = useState("ecosystemique");
 
