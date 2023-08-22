@@ -3,6 +3,7 @@ import SummaryBox, {
   SummaryBoxNotes,
   SummaryBoxIndicateurs,
   SummaryBoxSpecialEcosystemique,
+  SummaryBoxIndicateursLogo,
 } from "../summary-box/SummaryBox";
 import Box from "../box/Box";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -35,9 +36,9 @@ const EcoSystMainCard = ({ currentData }) => {
                 {currentData.indicateurs_ecosysteme.map((item, index) => (
                   <div
                     key={`summary-${index}`}
-                    className="col-3 col-md-4 col-sm-12 mb"
+                    className="col-3 col-md-6 col-sm-12"
                   >
-                    <SummaryBoxIndicateurs item={item} />
+                    <SummaryBoxIndicateursLogo item={item} />
                   </div>
                 ))}
               </div>
@@ -45,7 +46,7 @@ const EcoSystMainCard = ({ currentData }) => {
           </div>
           <div className="col-6 hide-md">
             <h3>Impacts sur les services écosystémiques des bords de route</h3>
-            <SummaryBoxSpecialEcosystemique item={currentData.revenueSummary} widthGiven={"500px"}/>
+            <SummaryBoxSpecialEcosystemique item={currentData.impactEcosysteme[0]} item2={currentData.impactEcosysteme[1]} widthGiven={"500px"}/>
           </div>
         </div>
       </div>

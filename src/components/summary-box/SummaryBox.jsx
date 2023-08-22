@@ -1,11 +1,7 @@
 import React from "react";
 import "./summary-box.scss";
 import Box from "../box/Box";
-import {
-  buildStyles,
-  CircularProgressbarWithChildren,
-} from "react-circular-progressbar";
-import { colors } from "../../constants";
+
 import { Line, Bar, Doughnut, Radar, PolarArea } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -23,6 +19,9 @@ import {
 
 import CircleBox from "./CircleBox";
 import { Button } from "@mui/material";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowAltCircleDown, faArrowAltCircleUp, faCheckCircle, faLeaf, faMinusCircle, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 
 ChartJS.register(
   CategoryScale,
@@ -52,6 +51,8 @@ const SummaryBox = ({ item }) => {
   );
 };
 export const SummaryBoxIndicateurs = ({ item }) => {
+
+
   return (
     <div className="summary-box">
       <div className="summary-box__info__indicateur">
@@ -61,6 +62,29 @@ export const SummaryBoxIndicateurs = ({ item }) => {
         <div className="summary-box__info__indicateur__value">{item.title}</div>
       </div>
     </div>
+  );
+};
+
+export const SummaryBoxIndicateursLogo = ({ item }) => {
+  return (
+    <Box>
+    <div className="summary-box">
+      <div className="summary-box__info__indicateur">
+        <div className="summary-box__info__indicateur__value"><FontAwesomeIcon icon={faLeaf} /></div>
+        <div className="summary-box__info__indicateur__title">
+          <CircleBox item={item} />
+        </div>
+        <div className="row">
+          <div className="col-6">
+            <div className="summary-box__info__indicateur__value"><FontAwesomeIcon icon={faPlusCircle} />Collecte</div>
+          </div>
+          <div className="col-6">
+            <div className="summary-box__info__indicateur__value"><FontAwesomeIcon icon={faMinusCircle} />Compostage</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </Box>
   );
 };
 
@@ -106,10 +130,10 @@ export const SummaryBoxSpecialGES = ({ item }) => {
     responsive: true,
     scales: {
       xAxis: {
-        display: false,
+        display: true,
       },
       yAxis: {
-        display: false,
+        display: true,
       },
     },
     plugins: {
@@ -154,10 +178,10 @@ export const SummaryBoxSpecialEconomique = ({ item, widthGiven }) => {
     responsive: true,
     scales: {
       xAxis: {
-        display: false,
+        display: true,
       },
       yAxis: {
-        display: false,
+        display: true,
       },
     },
     plugins: {
@@ -197,7 +221,7 @@ export const SummaryBoxSpecialEconomique = ({ item, widthGiven }) => {
   );
 };
 
-export const SummaryBoxSpecialEcosystemique = ({ item, widthGiven }) => {
+export const SummaryBoxSpecialEcosystemique = ({ item, item2, widthGiven }) => {
   const chartData = {
     labels: [
       "Fonction de maintien de la matière organique et de la qualité du sol",
@@ -208,27 +232,27 @@ export const SummaryBoxSpecialEcosystemique = ({ item, widthGiven }) => {
       "Fonction de régulation de la qualité de l'air",
       "Fonction de régulation des nuisances et des risques naturels",
     ],
-    datasets: [
-      {
-        label: "My First Dataset",
-        data: item.chartData.data,
-        fill: true,
-        backgroundColor: [
-          "rgb(255, 99, 132)",
-          "rgb(75, 192, 192)",
-          "rgb(255, 205, 86)",
-          "rgb(201, 203, 207)",
-          "rgb(54, 162, 235)",
-          "rgb(153, 102, 255)",
-          "rgb(255, 159, 64)",
-        ],
-        pointBackgroundColor: "rgb(255, 99, 132)",
-        pointBorderColor: "#fff",
-        pointHoverBackgroundColor: "#fff",
-        pointHoverBorderColor: "rgb(255, 99, 132)",
-      },
-    ],
-  };
+    datasets: [{
+      label: 'Avant ',
+      data: item.chartData.data.values,
+      fill: true,
+      backgroundColor: 'rgba(255, 99, 132, 0.2)',
+      borderColor: 'rgb(255, 99, 132)',
+      pointBackgroundColor: 'rgb(255, 99, 132)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgb(255, 99, 132)'
+    }, {
+      label: 'Après ',
+      data: item2.chartData.data,
+      fill: true,
+      backgroundColor: 'rgba(54, 162, 235, 0.2)',
+      borderColor: 'rgb(54, 162, 235)',
+      pointBackgroundColor: 'rgb(54, 162, 235)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgb(54, 162, 235)'
+    }]}
 
   const chartOptions = {
     responsive: true,
@@ -242,7 +266,7 @@ export const SummaryBoxSpecialEcosystemique = ({ item, widthGiven }) => {
     },
     plugins: {
       legend: {
-        display: false,
+        display: true,
       },
     },
     elements: {

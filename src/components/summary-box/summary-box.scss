@@ -39,6 +39,8 @@
         width: 80%;
         @include flex(flex-start, space-between);
         flex-direction: column;
+        color: #000;
+        font-size: $fontSizeSmall;
 
 
         &__title {

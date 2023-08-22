@@ -1,33 +1,4 @@
 const data = {
-    user: {
-        name: 'SAGID',
-    },
-    summary: [
-        {
-            title: 'Sales',
-            subtitle: 'Total sales today',
-            value: '$1.000',
-            percent: 70
-        },
-        {
-            title: 'Orders',
-            subtitle: 'Total orders today',
-            value: '3000',
-            percent: 49
-        },
-        {
-            title: 'Revenue',
-            subtitle: 'Total revenue today',
-            value: '$678',
-            percent: 38
-        },
-        {
-            title: 'Visits',
-            subtitle: 'Total visits today',
-            value: '2345',
-            percent: 55
-        }
-    ],
     revenueSummary: {
         title: 'Emission par activité',
         value: 400 + ' tCO2e',
@@ -36,53 +7,33 @@ const data = {
             data: [1, 2, 3, 1, 5, 4, 3]
         }
     },
-    overall: [
+
+    impactEcosysteme: [
         {
-            value: '300K',
-            title: 'Orders'
+        labels: [ 'Fonction de maintien de la matière organique et de la qualité du sol', 'Fonction de maintien de la biodiversité', 'Fonction hydrologique', 'Fonction brise-vent et diminution des températures', 'Fonction de stockage du carbone', "Fonction de régulation de la qualité de l'air", 'Fonction de régulation des nuisances et des risques naturels' ],
+        title: 'Avant l\'entretien',
+        chartData: {
+            data: {     
+            values: [1, 2, 3, 1, 5, 4, 3]
+                },
+            },
         },
         {
-            value: '9.876K',
-            title: 'Customers'
+        title: 'Après l\'entretien',
+        chartData: {
+            data: {     
+            values: [1, 2, 3, 1, 5, 4, 3]
+                },
+            },
         },
-        {
-            value: '1.234K',
-            title: 'Products'
-        },
-        {
-            value: '$5678',
-            title: 'Revenue'
-        }
     ],
-    revenueByChannel: [
-        {
-            title: 'Direct',
-            value: 70
-        },
-        {
-            title: 'External search',
-            value: 40
-        },
-        {
-            title: 'Referal',
-            value: 60
-        },
-        {
-            title: 'Social',
-            value: 30
-        }
-    ],
-    revenueByMonths: {
-        labels: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan'],
-        data: [250, 200, 300, 280, 100, 220, 310, 190, 200, 120, 250, 350]
-    },
 
     coutsEconomiques: {
         title: 'Coûts économiques',
         value: '3.261.000€',
         chartData: {
-            labels: ['2023', '2024', '2025'],
-            data: [300, 300, 280]
+            labels: ['2023', '2024', '2025', '2026', '2027', '2028', '2029'],
+            data: [300, 300, 280, 150, 100, 120, 110]
         }        
     },
             
@@ -110,23 +61,25 @@ const data = {
     ],
 
     notes_ecosysteme: [
-        { title : 'pour la capacité du réseau à fournir des services écosystémiques', value : 20 },
-        { title : "pour l'impact de l'entretien sur la capacité", value : 28 },
+        { title : 'pour la capacité du réseau à fournir des services écosystémiques', 
+        value : 20 },
+        { title : "pour l'impact de l'entretien sur la capacité", 
+        value : 50 },
     ],
 
 
     indicateurs_ecosysteme: [
         {
             title:'Fonction de maintien de la matière organique et de la qualité du sol',
-            value: 'A'
+            value: 1
         },
         {
             title:'Fonction de maintien de la biodiversité',
-            value: 'B'
+            value: 2
         },
         {
             title:'Fonction hydrologique',
-            value: 'C'
+            value: 3
         },
         {
             title:'Fonction brise-vent et diminution des températures',
@@ -146,7 +99,6 @@ const data = {
         }
     ],
 
-
     indicateurs_ges: [
         {
             title:"émises lors de l'entretien des bords de route",
@@ -155,24 +107,6 @@ const data = {
         },
     ],
 
-    plan_entretien_params: [
-        {
-            value: '300K',
-            title: 'Orders'
-        },
-        {
-            value: '9.876K',
-            title: 'Customers'
-        },
-        {
-            value: '1.234K',
-            title: 'Products'
-        },
-        {
-            value: '$5678',
-            title: 'Revenue'
-        }
-    ],
     regions : [
         {
             region_name: "Auvergne-Rhône-Alpes",
@@ -368,9 +302,11 @@ const data = {
     ]
 }
 
-//const jsonData = JSON.stringify(data, null, 2);
 
-//const fs = require('fs');
-//fs.writeFileSync('data.json', jsonData);
+ //const jsonData = JSON.stringify(data, null, 2);
 
-export default data
+ //const fs = require('fs');
+ //fs.writeFileSync('data.json', jsonData);
+
+
+//export default data

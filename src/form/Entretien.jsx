@@ -46,6 +46,23 @@ const handleSliderChange = _.debounce((id, newValue) => {
     newCurrentData.revenueSummary.chartData.data[3] = newValue + 150;
     newCurrentData.revenueSummary.chartData.data[4] = newValue + 50;
 
+
+
+
+
+    //Calcul pour le RadarChart
+
+    const aux = newCurrentData.impactEcosysteme[1].chartData.data
+    newCurrentData.impactEcosysteme[1].chartData.data = [newValue + 1, newValue + 2, newValue -3, newValue - 4, newValue + 2, newValue -2, newValue -3];
+    newCurrentData.impactEcosysteme[0].chartData.data = aux;
+
+
+    //Calcul pour les indicateurs
+
+    newCurrentData.indicateurs_ecosysteme.forEach(e => {
+      e.value = newValue + 1;
+    });
+
     setCurrentData(newCurrentData);
   }, 400);
 

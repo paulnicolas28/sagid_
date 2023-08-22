@@ -1,33 +1,4 @@
 {
-  "user": {
-    "name": "SAGID"
-  },
-  "summary": [
-    {
-      "title": "Sales",
-      "subtitle": "Total sales today",
-      "value": "$1.000",
-      "percent": 70
-    },
-    {
-      "title": "Orders",
-      "subtitle": "Total orders today",
-      "value": "3000",
-      "percent": 49
-    },
-    {
-      "title": "Revenue",
-      "subtitle": "Total revenue today",
-      "value": "$678",
-      "percent": 38
-    },
-    {
-      "title": "Visits",
-      "subtitle": "Total visits today",
-      "value": "2345",
-      "percent": 55
-    }
-  ],
   "revenueSummary": {
     "title": "Emission par activité",
     "value": "400 tCO2e",
@@ -53,72 +24,49 @@
       ]
     }
   },
-  "overall": [
+  "impactEcosysteme": [
     {
-      "value": "300K",
-      "title": "Orders"
+      "labels": [
+        "Fonction de maintien de la matière organique et de la qualité du sol",
+        "Fonction de maintien de la biodiversité",
+        "Fonction hydrologique",
+        "Fonction brise-vent et diminution des températures",
+        "Fonction de stockage du carbone",
+        "Fonction de régulation de la qualité de l'air",
+        "Fonction de régulation des nuisances et des risques naturels"
+      ],
+      "title": "Avant l'entretien",
+      "chartData": {
+        "data": {
+          "values": [
+            1,
+            2,
+            3,
+            1,
+            5,
+            4,
+            3
+          ]
+        }
+      }
     },
     {
-      "value": "9.876K",
-      "title": "Customers"
-    },
-    {
-      "value": "1.234K",
-      "title": "Products"
-    },
-    {
-      "value": "$5678",
-      "title": "Revenue"
+      "title": "Après l'entretien",
+      "chartData": {
+        "data": {
+          "values": [
+            1,
+            2,
+            3,
+            1,
+            5,
+            4,
+            3
+          ]
+        }
+      }
     }
   ],
-  "revenueByChannel": [
-    {
-      "title": "Direct",
-      "value": 70
-    },
-    {
-      "title": "External search",
-      "value": 40
-    },
-    {
-      "title": "Referal",
-      "value": 60
-    },
-    {
-      "title": "Social",
-      "value": 30
-    }
-  ],
-  "revenueByMonths": {
-    "labels": [
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "July",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec",
-      "Jan"
-    ],
-    "data": [
-      250,
-      200,
-      300,
-      280,
-      100,
-      220,
-      310,
-      190,
-      200,
-      120,
-      250,
-      350
-    ]
-  },
   "coutsEconomiques": {
     "title": "Coûts économiques",
     "value": "3.261.000€",
@@ -126,12 +74,20 @@
       "labels": [
         "2023",
         "2024",
-        "2025"
+        "2025",
+        "2026",
+        "2027",
+        "2028",
+        "2029"
       ],
       "data": [
         300,
         300,
-        280
+        280,
+        150,
+        100,
+        120,
+        110
       ]
     }
   },
@@ -164,37 +120,37 @@
     },
     {
       "title": "pour l'impact de l'entretien sur la capacité",
-      "value": 28
+      "value": 50
     }
   ],
   "indicateurs_ecosysteme": [
     {
       "title": "Fonction de maintien de la matière organique et de la qualité du sol",
-      "value": "A"
+      "value": 1
     },
     {
       "title": "Fonction de maintien de la biodiversité",
-      "value": "B"
+      "value": 2
     },
     {
       "title": "Fonction hydrologique",
-      "value": "C"
+      "value": 3
     },
     {
       "title": "Fonction brise-vent et diminution des températures",
-      "value": "D"
+      "value": 1
     },
     {
       "title": "Fonction de stockage du carbone",
-      "value": "E"
+      "value": 5
     },
     {
       "title": "Fonction de régulation de la qualité de l'air",
-      "value": "F"
+      "value": 4
     },
     {
       "title": "Fonction de régulation des nuisances et des risques naturels",
-      "value": "G"
+      "value": 3
     }
   ],
   "indicateurs_ges": [
@@ -202,24 +158,6 @@
       "title": "émises lors de l'entretien des bords de route",
       "subtitle": "soit l'équivalent de 122 allers retours Paris - New York",
       "value": "8642 tCO2e"
-    }
-  ],
-  "plan_entretien_params": [
-    {
-      "value": "300K",
-      "title": "Orders"
-    },
-    {
-      "value": "9.876K",
-      "title": "Customers"
-    },
-    {
-      "value": "1.234K",
-      "title": "Products"
-    },
-    {
-      "value": "$5678",
-      "title": "Revenue"
     }
   ],
   "regions": [
