@@ -38,7 +38,7 @@ const EcoSystMainCard = ({ currentData }) => {
                     key={`summary-${index}`}
                     className="col-3 col-md-6 col-sm-12"
                   >
-                    <SummaryBoxIndicateursLogo item={item} />
+                    <SummaryBoxIndicateursLogo item={item} currentData={currentData} index={index}/>
                   </div>
                 ))}
               </div>
@@ -46,7 +46,7 @@ const EcoSystMainCard = ({ currentData }) => {
           </div>
           <div className="col-6 hide-md">
             <h3>Impacts sur les services écosystémiques des bords de route</h3>
-            <SummaryBoxSpecialEcosystemique item={currentData.impactEcosysteme[0]} item2={currentData.impactEcosysteme[1]} widthGiven={"500px"}/>
+            <SummaryBoxSpecialEcosystemique item={currentData.indicateurs_ecosysteme} widthGiven={"500px"}/>
           </div>
         </div>
       </div>

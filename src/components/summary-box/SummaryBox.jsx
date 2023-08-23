@@ -20,8 +20,12 @@ import {
 import CircleBox from "./CircleBox";
 import { Button } from "@mui/material";
 
+import InfoCard from './InfoCard';
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowAltCircleDown, faArrowAltCircleUp, faCheckCircle, faLeaf, faMinusCircle, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
+import { faLeaf, faPlusCircle, faMinusCircle, faArrowDown, faArrowUpRightFromSquare, faArrowUpLong} from "@fortawesome/free-solid-svg-icons";
+
+import { useState } from 'react';
 
 ChartJS.register(
   CategoryScale,
@@ -65,28 +69,191 @@ export const SummaryBoxIndicateurs = ({ item }) => {
   );
 };
 
-export const SummaryBoxIndicateursLogo = ({ item }) => {
+// export const SummaryBoxIndicateursLogo = ({ item }) => {
+//   const [isCardOpen, setIsCardOpen] = useState(false);
+
+//   const [isHovered, setIsHovered] = useState(false);
+
+//   const toggleCard = () => {
+//     setIsCardOpen(!isCardOpen);
+//   };
+
+//   return (
+//     <Box>
+//       <div className={`summary-box ${isCardOpen ? 'open' : 'close'}`}>
+//         <div className="summary-box__info__indicateur">
+//         <div
+//             className={`summary-box__info__indicateur__value ${isHovered ? 'hovered' : ''}`}
+//             onMouseEnter={() => setIsHovered(true)}
+//             onMouseLeave={() => setIsHovered(false)}
+//           >
+//             <FontAwesomeIcon icon={faLeaf} />
+//             {isHovered && <span className="hover-text"> </span>}
+//           </div>
+//           <div className="summary-box__info__indicateur__title">
+//             <CircleBox item={item} />
+//           </div>
+
+//           <button className="toggle-button" onClick={toggleCard}>
+//             {isCardOpen ? 'Close' : 'Open'} More Info
+//           </button>
+//           {isCardOpen && (
+//             <div className="more-info">
+//               {/* Add your additional information here */}
+//               <div className="row">
+//             <div className="col-6">
+//               <div className="summary-box__info__indicateur__value">
+//                 <FontAwesomeIcon icon={faPlusCircle} />
+//                 <span className="hover-text">Collecte</span>
+//               </div>
+//             </div>
+//             <div className="col-6">
+//               <div className="summary-box__info__indicateur__value">
+//                 <FontAwesomeIcon icon={faMinusCircle} />
+//                 <span className="hover-text">Test</span>
+//               </div>
+//             </div>
+//           </div>
+//             </div>
+//           )}
+//         </div>
+//       </div>
+//     </Box>
+//   );
+// };
+
+// export const SummaryBoxIndicateursLogo = ({ item }) => {
+//   const [isModalOpen, setIsModalOpen] = useState(false);
+
+//   const toggleModal = () => {
+//     setIsModalOpen(!isModalOpen);
+//   };
+
+//   return (
+//     <div>
+//       <div className="summary-box">
+//         <div className="summary-box__info__indicateur">
+//           <div className="summary-box__info__indicateur__value" onClick={toggleModal}>
+//             <span className="hover-text">{item.title}</span>
+//           </div>
+//           <div className="summary-box__info__indicateur__title">
+//             <CircleBox item={item} />
+//           </div>
+//         </div>
+//       </div>
+
+//       {isModalOpen && (
+//         <div className="modal-overlay">
+//           <div className="modal">
+//             <div className="modal-content">
+//               {/* Add your additional information here */}
+//               <div className="row">
+//                 <div className="col-6">
+//                   <div className="summary-box__info__indicateur__value">
+//                     <FontAwesomeIcon icon={faPlusCircle} />
+//                     <Typography className="hover-text">Collecte</Typography>
+//                   </div>
+//                 </div>
+//                 <div className="col-6">
+//                   <div className="summary-box__info__indicateur__value">
+//                     <FontAwesomeIcon icon={faMinusCircle} />
+//                     <Typography className="hover-text">Méthanisation</Typography>
+//                   </div>
+//                 </div>
+//               </div>
+//               <button className="close-button" onClick={toggleModal}>
+//                 Fermer
+//               </button>
+//             </div>
+//           </div>
+//         </div>
+//       )}
+//     </div>
+//   );
+// };
+
+// export const SummaryBoxIndicateursLogo = ({ item, currentData }) => {
+//   const [isModalOpen, setIsModalOpen] = useState(false);
+
+//   const toggleModal = () => {
+//     setIsModalOpen(!isModalOpen);
+//   };
+
+//   console.log(currentData.impactEcosysteme[0].chartData.data.values)
+
+//   return (
+//     <div>
+//       <div className="summary-box">
+//         <div className="summary-box__info__indicateur">
+//           <div className="summary-box__info__indicateur__value" onClick={toggleModal}>
+//             <span className="hover-text">{item.title}</span>
+//             <FontAwesomeIcon icon={faArrowUpLong} bounce style={{color: "#00ff00",}} />
+//             <FontAwesomeIcon icon={faArrowDown} bounce style={{color: " #FF0000",}} />
+//             <sup> {currentData.impactEcosysteme[0].chartData.data.values[0]}</sup>
+//           </div>
+//           <div className="summary-box__info__indicateur__title">
+//             <CircleBox item={item} />
+//           </div>
+//         </div>
+//       </div>
+
+//       {isModalOpen && (
+//         <InfoCard
+//           title={item.title}
+//           text={item.text}
+//           list={item.list}
+//           onClose={toggleModal} // Pass the toggleModal function to close the modal
+//         />
+//       )}
+//     </div>
+//   );
+// };
+
+
+export const SummaryBoxIndicateursLogo = ({ item, currentData, index }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+
+
+
   return (
-    <Box>
-    <div className="summary-box">
-      <div className="summary-box__info__indicateur">
-        <div className="summary-box__info__indicateur__value"><FontAwesomeIcon icon={faLeaf} /></div>
-        <div className="summary-box__info__indicateur__title">
-          <CircleBox item={item} />
-        </div>
-        <div className="row">
-          <div className="col-6">
-            <div className="summary-box__info__indicateur__value"><FontAwesomeIcon icon={faPlusCircle} />Collecte</div>
-          </div>
-          <div className="col-6">
-            <div className="summary-box__info__indicateur__value"><FontAwesomeIcon icon={faMinusCircle} />Compostage</div>
-          </div>
-        </div>
+<div>
+  <div className="summary-box">
+    <div className="summary-box__info__indicateur">
+      <div className="summary-box__info__indicateur__value" key={index} onClick={toggleModal}>
+        <span className="hover-text">{item.title}</span>
+        {item.value_after < item.value ? (
+          <>
+            <FontAwesomeIcon icon={faArrowDown} bounce style={{ color: "#ff0000" }} />
+            <sup> - {item.value - item.value_after} </sup>
+          </>
+        ) : (
+          <>
+            <FontAwesomeIcon icon={faArrowUpLong} bounce style={{ color: "#00ff00" }} />
+            <sup> + {item.value_after - item.value} </sup>
+          </>
+        )}
+        <CircleBox item={item} />
       </div>
     </div>
-    </Box>
+  </div>
+  
+      {isModalOpen && (
+        <InfoCard
+          title={item.title}
+          text={item.text}
+          list={item.analyse}
+          advice={item.advices}
+          onClose={toggleModal}
+        />
+      )}
+    </div>
   );
-};
+  
+      };    
 
 export const SummaryBoxNotes = ({ item }) => {
   return (
@@ -221,20 +388,21 @@ export const SummaryBoxSpecialEconomique = ({ item, widthGiven }) => {
   );
 };
 
-export const SummaryBoxSpecialEcosystemique = ({ item, item2, widthGiven }) => {
+export const SummaryBoxSpecialEcosystemique = ({ item, widthGiven }) => {
+
+  const data = []
+  const data_after = []
+
+  for (let i = 0; i < item.length; i++) {
+    data.push(item[i].value)
+    data_after.push(item[i].value_after)
+  }
+
   const chartData = {
-    labels: [
-      "Fonction de maintien de la matière organique et de la qualité du sol",
-      "Fonction de maintien de la biodiversité",
-      "Fonction hydrologique",
-      "Fonction brise-vent et diminution des températures",
-      "Fonction de stockage du carbone",
-      "Fonction de régulation de la qualité de l'air",
-      "Fonction de régulation des nuisances et des risques naturels",
-    ],
+    labels: [ 'Qualité du sol', 'Biodiversité', 'Hydrologique', 'Brise-vent et diminution des températures', 'Stockage du carbone', "Qualité de l'air", 'Risques naturels' ],
     datasets: [{
       label: 'Avant ',
-      data: item.chartData.data.values,
+      data: data,
       fill: true,
       backgroundColor: 'rgba(255, 99, 132, 0.2)',
       borderColor: 'rgb(255, 99, 132)',
@@ -244,7 +412,7 @@ export const SummaryBoxSpecialEcosystemique = ({ item, item2, widthGiven }) => {
       pointHoverBorderColor: 'rgb(255, 99, 132)'
     }, {
       label: 'Après ',
-      data: item2.chartData.data,
+      data:data_after,
       fill: true,
       backgroundColor: 'rgba(54, 162, 235, 0.2)',
       borderColor: 'rgb(54, 162, 235)',
@@ -254,27 +422,42 @@ export const SummaryBoxSpecialEcosystemique = ({ item, item2, widthGiven }) => {
       pointHoverBorderColor: 'rgb(54, 162, 235)'
     }]}
 
-  const chartOptions = {
-    responsive: true,
-    scales: {
-      xAxis: {
-        display: false,
+    const chartOptions = {
+      responsive: true,
+      scales: {
+        x: {
+          display: false,
+        },
+        y: {
+          display: false,
+        },
+        r: {
+          pointLabels: {
+            font: {
+              size: 11,
+            },
+          },
+        }
+        
       },
-      yAxis: {
-        display: false,
+      plugins: {
+        legend: {
+          display: true,
+          labels: {
+            color: 'rgb(255, 99, 132)',
+            usePointStyle: true, // Use the point style (marker) for dataset labels
+            font: {
+              size: 16, // Adjust the font size for dataset labels
+            },
+          },
+        },
       },
-    },
-    plugins: {
-      legend: {
-        display: true,
+      elements: {
+        point: {
+          radius: 5,
+        },
       },
-    },
-    elements: {
-      point: {
-        radius: 0,
-      },
-    },
-  };
+    };
 
   return (
     <Box>
