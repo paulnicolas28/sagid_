@@ -1,6 +1,6 @@
 @use '../../scss/abstracts/' as *;
 
-.box {
+.box{
     padding: 20px 30px;
     margin-bottom: 10px;
     border-radius: $borderRadius;
@@ -16,11 +16,15 @@
     }
 
     &-fullheight {
-        height: calc(100% - $spacing);
+        height: 100%;
 
         @include tablet {
             height: calc(100% - $mobileSpacing);
         }
+    }
+    &-small{
+        width: 100%;
+        height: 100%;
     }
 }
 

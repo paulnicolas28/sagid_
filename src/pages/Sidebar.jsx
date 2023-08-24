@@ -20,7 +20,7 @@ import styled from '@emotion/styled';
     },
   }));
 
-const Sidebar = ( {currentData, setCurrentData} ) => {
+const Sidebar = ( {currentData, setCurrentData, setVisible} ) => {
   const [activeTab, setActiveTab] = useState(0);
 
   const handleTabChange = (event, newValue) => {
@@ -37,12 +37,12 @@ const Sidebar = ( {currentData, setCurrentData} ) => {
       </StyledTabs>
       {activeTab === 0 && (
         <Typography variant="h6" component="div" mt={2}>
-          <Entretien currentData={currentData} setCurrentData={setCurrentData}/>
+          <Entretien currentData={currentData} setCurrentData={setCurrentData} setVisible={setVisible}/>
         </Typography>
       )}
       {activeTab === 1 && (
         <Typography variant="h6" component="div" mt={2}>
-          <Territoire/>
+          <Territoire currentData={currentData} setCurrentData={setCurrentData} />
         </Typography>
       )}
     </div>

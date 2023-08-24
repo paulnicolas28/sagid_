@@ -40,6 +40,7 @@ import { Tab } from "@material-ui/core";
 import styled from "@emotion/styled";
 
 import jsonData from "../constants/data.json" // Adjust the path if needed
+import { useEffect } from "react";
 
 ChartJS.register(
   CategoryScale,
@@ -59,7 +60,7 @@ const StyledTabs = styled(Tabs)({
 // Custom styles for the Tab component
 const StyledTab = styled(Tab)(({ theme }) => ({
   "& .MuiTab-wrapper": {
-    color: "green",
+    color: "black",
   },
   "&.Mui-selected": {
     backgroundColor: "#green",
@@ -67,6 +68,9 @@ const StyledTab = styled(Tab)(({ theme }) => ({
 }));
 
 const Dashboard = () => {
+
+  const [visible, setVisible] = useState(false);
+
   const [currentData, setCurrentData] = useState(jsonData);
 
   const [selectedTab, setSelectedTab] = useState("ecosystemique");
@@ -109,18 +113,18 @@ const Dashboard = () => {
           {selectedTab === "ecosystemique" && (
             <div>
               <Box>
-                <EcoSystMainCard currentData={currentData} />
+                <EcoSystMainCard currentData={currentData} visible={visible}/>
               </Box>
               <div className="row">
                 <div className="col-6">
-                  <Box>
-                    <EcoNomiqueSmallCard currentData={currentData} />
+                  <Box small>
+                    <EcoNomiqueSmallCard currentData={currentData}visible={visible}/>
                   </Box>
                 </div>
                 <div className="col-6">
-                  <Box>
-                    <GESSmallCard currentData={currentData} />
-                  </Box>
+                <Box small>
+                    <GESSmallCard currentData={currentData} visible={visible}/>
+                </Box>
                 </div>
               </div>
             </div>
@@ -129,17 +133,17 @@ const Dashboard = () => {
           {selectedTab === "economique" && (
             <div>
               <Box>
-                <EcoNomiqueMainCard currentData={currentData} />
+                <EcoNomiqueMainCard currentData={currentData} visible={visible}/>
               </Box>
               <div className="row">
                 <div className="col-6">
-                  <Box>
-                    <EcoSystSmallCard currentData={currentData} />
+                <Box small>
+                    <EcoSystSmallCard currentData={currentData} visible={visible}/>
                   </Box>
                 </div>
                 <div className="col-6">
-                  <Box>
-                    <GESSmallCard currentData={currentData} />
+                <Box small>
+                    <GESSmallCard currentData={currentData}visible={visible}/>
                   </Box>
                 </div>
               </div>
@@ -149,17 +153,17 @@ const Dashboard = () => {
           {selectedTab === "ges" && (
             <div>
               <Box>
-                <GESMainCard currentData={currentData} />
+                <GESMainCard currentData={currentData} visible={visible}/>
               </Box>
               <div className="row">
                 <div className="col-6">
-                  <Box>
-                    <EcoSystSmallCard currentData={currentData} />
+                <Box small>
+                    <EcoSystSmallCard currentData={currentData} visible={visible}/>
                   </Box>
                 </div>
                 <div className="col-6">
-                  <Box>
-                    <EcoNomiqueSmallCard currentData={currentData} />
+                <Box small>
+                    <EcoNomiqueSmallCard currentData={currentData}visible={visible}/>
                   </Box>
                 </div>
               </div>
@@ -167,7 +171,7 @@ const Dashboard = () => {
           )}
         </DashboardWrapperMain>
         <DashboardWrapperRight>
-          <Sidebar currentData={currentData} setCurrentData={setCurrentData} />
+          <Sidebar currentData={currentData} setCurrentData={setCurrentData} setVisible={setVisible}/>
         </DashboardWrapperRight>
       </DashboardWrapper>
     </div>

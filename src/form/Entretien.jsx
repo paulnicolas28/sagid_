@@ -4,34 +4,63 @@ import FormLabel from '@mui/material/FormLabel';
 
 import './form.scss';
 import SliderTextFieldForm from './SliderTextFieldForm';
-import _ from 'lodash';
+import _, { set } from 'lodash';
 
 import { styled } from '@mui/material/styles';
 
 
 const StyledRadioGroup = styled(RadioGroup)({
   flexDirection: 'row',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  margin: '1rem',
 });
 
 const StyledFormControl = styled(FormControl)({
   margin: '1rem',
   minWidth: '120px',
+  maxWidth: '300px',
+  width: '100%',
+  '& .MuiFormLabel-root': {
+    marginBottom: '0.5rem',
+  },
 });
 
-const Entretien = ( {currentData, setCurrentData }) => {
+const Entretien = ( {currentData, setCurrentData, setVisible }) => {
   const [selectedOption1, setSelectedOption1] = useState('differencie');
   const [selectedOption2, setSelectedOption2] = useState('lutte');
 
-  const handleOption1Change = (event) => {
+  const handleOption1Change = _.debounce((event) => {
     setSelectedOption1(event.target.value);
-  };
+    const newCurrentData = {...currentData};
 
-  const handleOption2Change = (event) => {
+    newCurrentData.indicateurs_ecosysteme.forEach(e => {
+      const randomValue = Math.floor(Math.random() * 5) + 1;
+      e.value = e.value_after;
+      e.value_after = randomValue;
+    });
+
+    setCurrentData(newCurrentData);
+  }, 400);
+
+  const handleOption2Change = _.debounce((event) => {
     setSelectedOption2(event.target.value);
-  };
+    const newCurrentData = {...currentData};
+
+    newCurrentData.indicateurs_ecosysteme.forEach(e => {
+      const randomValue = Math.floor(Math.random() * 5) + 1;
+      e.value = e.value_after;
+      e.value_after = randomValue;
+    });
+
+    setCurrentData(newCurrentData);
+
+
+  }, 400);
 
 
 const handleSliderChange = _.debounce((id, newValue) => {
+
     const newCurrentData = {...currentData};
 
     //Calcul pour les indicateurs
@@ -63,8 +92,9 @@ const handleSliderChange = _.debounce((id, newValue) => {
     });
 
     setCurrentData(newCurrentData);
-  }, 400);
+    setVisible(true);
 
+  }, 400);
 
   return (
     <div className='entretien'>

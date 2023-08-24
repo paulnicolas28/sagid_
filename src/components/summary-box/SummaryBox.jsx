@@ -18,7 +18,7 @@ import {
 } from "chart.js";
 
 import CircleBox from "./CircleBox";
-import { Button } from "@mui/material";
+import { Button, colors } from "@mui/material";
 
 import InfoCard from './InfoCard';
 
@@ -26,6 +26,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLeaf, faPlusCircle, faMinusCircle, faArrowDown, faArrowUpRightFromSquare, faArrowUpLong, faArrowRight} from "@fortawesome/free-solid-svg-icons";
 
 import { useState } from 'react';
+
+import { Typography } from "@mui/material";
 
 ChartJS.register(
   CategoryScale,
@@ -39,6 +41,15 @@ ChartJS.register(
   RadialLinearScale,
   ArcElement
 );
+
+const datasetColors = [
+  '#8624DB',
+  '#FF9066',
+  '#3F51B5',
+  '#fff',
+  '#4CAF50',
+  '#DB190C',
+  '#FFEB3B',];
 
 const SummaryBox = ({ item }) => {
   return (
@@ -69,7 +80,10 @@ export const SummaryBoxIndicateurs = ({ item }) => {
   );
 };
 
-export const SummaryBoxIndicateursLogo = ({ item, currentData, index }) => {
+export const SummaryBoxIndicateursLogo = ({ item, currentData, index, visible }) => {
+
+  console.log(visible)
+
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleModal = () => {
@@ -81,17 +95,17 @@ export const SummaryBoxIndicateursLogo = ({ item, currentData, index }) => {
     <div className="summary-box__info__indicateur">
       <div className="summary-box__info__indicateur__value" key={index} onClick={toggleModal}>
         <span className="hover-text">{item.title}</span>
-        {item.value_after < item.value ? (
+        {item.value_after < item.value ? ( visible &&  
           <>
             <FontAwesomeIcon icon={faArrowDown} bounce style={{ color: "#ff0000" }} />
             <sup> - {item.value - item.value_after} </sup>
           </>
-        ) : item.value_after > item.value ? (
+        ) : item.value_after > item.value ? ( visible && 
           <>
             <FontAwesomeIcon icon={faArrowUpLong} bounce style={{ color: "#00ff00" }} />
             <sup> + {item.value_after - item.value} </sup>
           </>
-        ) : (
+        ) : ( visible && 
           // Display an arrow to the right when item.value_after equals item.value
           <>
             <FontAwesomeIcon icon={faArrowRight} bounce style={{ color: "#0000ff" }} />
@@ -116,8 +130,7 @@ export const SummaryBoxIndicateursLogo = ({ item, currentData, index }) => {
   
       };    
 
-export const SummaryBoxNotes = ({ item }) => {
-
+export const SummaryBoxNotesEco = ({ item, visible }) => {
   let value_sum = 0;
   let value_sum_after = 0;
   let percent = 0;
@@ -134,25 +147,22 @@ export const SummaryBoxNotes = ({ item }) => {
       <div className="summary-box">
         <div className="summary-box__info__indicateur">
           <div className="summary-box__info__indicateur__title">
-            Avant : {value_sum} {item[0].unit} <br />
-            Après : {value_sum_after} {item[0].unit} <br />
-            Pourcent : {percent} %
-
-            {value_sum < value_sum_after ? (
+            {value_sum_after} {item[0].unit} <br />
+            {value_sum < value_sum_after ? ( visible &&  
           <>
             <FontAwesomeIcon icon={faArrowDown} bounce style={{ color: "#ff0000" }} />
-            <sup> - {value_sum - value_sum_after} </sup>
+            <sup> {percent} % </sup>
           </>
-        ) : value_sum_after > value_sum ? (
+        ) : value_sum_after > value_sum ? ( visible &&
           <>
             <FontAwesomeIcon icon={faArrowUpLong} bounce style={{ color: "#00ff00" }} />
-            <sup> + {value_sum_after - value_sum} </sup>
+            <sup> + {percent} % </sup>
           </>
-        ) : (
+        ) : ( visible &&
           // Display an arrow to the right when item.value_after equals item.value
           <>
             <FontAwesomeIcon icon={faArrowRight} bounce style={{ color: "#0000ff" }} />
-            <sup> 0 </sup>
+            <sup> 0 % </sup>
           </>
         )}
 
@@ -166,13 +176,71 @@ export const SummaryBoxNotes = ({ item }) => {
   );
 };
 
-export const SummaryBoxNotesBtn = ({ item }) => {
+export const SummaryBoxNotesGes = ({ item, visible }) => {
+  let value_sum = 0;
+  let value_sum_after = 0;
+  let percent = 0;
+
+  for (let i = 1; i < item.length; i++) {
+    value_sum += item[i].value;
+    value_sum_after += item[i].value_after;
+  }
+
+  percent = Math.round((value_sum_after - value_sum) / value_sum * 100);
+
   return (
     <Box>
       <div className="summary-box">
         <div className="summary-box__info__indicateur">
           <div className="summary-box__info__indicateur__title">
-            {item.value}
+            {value_sum} {item[0].unit} <br />
+            {value_sum_after} {item[0].unit} <br />
+            {value_sum < value_sum_after ? ( visible &&
+          <>
+            <FontAwesomeIcon icon={faArrowDown} bounce style={{ color: "#ff0000" }} />
+            <sup> - {percent} % </sup>
+          </>
+        ) : value_sum_after > value_sum ? ( visible &&
+          <>
+            <FontAwesomeIcon icon={faArrowUpLong} bounce style={{ color: "#00ff00" }} />
+            <sup> + {percent} % </sup>
+          </>
+        ) : ( visible &&
+          // Display an arrow to the right when item.value_after equals item.value
+          <>
+            <FontAwesomeIcon icon={faArrowRight} bounce style={{ color: "#0000ff" }} />
+            <sup> 0 %</sup>
+          </>
+        )}
+
+          </div>
+          <div className="summary-box__info__indicateur__value">
+            {item[0].title} 
+            <Typography variant="body2" gutterBottom> 
+            {item[0].subtitle} {item[0].new_york} {item[0].subtitle_2}
+            </Typography>
+          </div>
+        </div>
+      </div>
+    </Box>
+  );
+};
+
+export const SummaryBoxNotesBtn = ({ item }) => {
+  let value_sum = 0;
+  let value_sum_after = 0;
+
+  for (let i = 1; i < item.length; i++) {
+    value_sum += item[i].value;
+    value_sum_after += item[i].value_after;
+  }
+
+  return (
+    <Box>
+      <div className="summary-box">
+        <div className="summary-box__info__indicateur">
+          <div className="summary-box__info__indicateur__title">
+            {value_sum} {item[0].unit} <br />
           </div>
           <div className="summary-box__info__indicateur__value">
             {item.title}
@@ -185,15 +253,6 @@ export const SummaryBoxNotesBtn = ({ item }) => {
     </Box>
   );
 };
-
-const datasetColors = [
-  '#8624DB',
-  '#FF9066',
-  '#3F51B5',
-  '#fff',
-  '#4CAF50',
-  '#DB190C',
-  '#FFEB3B',];
 
 export const SummaryBoxSpecialGES = ({ item }) => {
   const data = []
@@ -232,16 +291,20 @@ export const SummaryBoxSpecialGES = ({ item }) => {
     labels: data_labels,
     datasets: [
       {
-        label: "Revenue",
+        label: "Emission de GES avant ", 
         data: data,
         tension: 0.5,
         backgroundColor: datasetColors,
+        borderColor: "white",
+
       },
       {
         label: "Revenue After",
         data: data_after,
         tension: 0.5,
         backgroundColor: datasetColors,
+        borderColor: "white",
+
       },
     ],
   };
@@ -264,7 +327,7 @@ export const SummaryBoxSpecialEconomique = ({ item, widthGiven }) => {
   const data_after = []
   const data_labels = []
 
-  for (let i = 1; i < item.length; i++) {
+  for (let i = 2; i < item.length; i++) {
     data.push(item[i].value)
     data_after.push(item[i].value_after)
     data_labels.push(item[i].title)
@@ -296,19 +359,19 @@ export const SummaryBoxSpecialEconomique = ({ item, widthGiven }) => {
     labels: data_labels,
     datasets: [
       {
-        label: "Revenue",
+        label: 'Avec les paramètres précédents',
         data: data,
-        borderColor: "blue",
+        borderColor: "white",
         tension: 0.5,
-        backgroundColor: "blue",
+        backgroundColor: datasetColors[1],
 
       },
       {
-         label: "Revenue After",
-         data: data_after,
-         borderColor: "blue",
+        label: 'Avec les paramètres actuels',
+        data: data_after,
+         borderColor: "white",
          tension: 0.5,
-         backgroundColor: "#FF9066",
+         backgroundColor: datasetColors[2],
 
        }
     ],
@@ -341,20 +404,20 @@ export const SummaryBoxSpecialEcosystemique = ({ item, widthGiven }) => {
   const chartData = {
     labels: data_labels,
     datasets: [{
-      label: 'Avant ',
+      label: 'Avec les paramètres précédents',
       data: data,
       fill: true,
       backgroundColor: 'rgba(255, 99, 132, 0.2)',
-      borderColor: 'rgb(255, 99, 132)',
+      borderColor: datasetColors[1],
       pointBackgroundColor: 'rgb(255, 99, 132)',
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
       pointHoverBorderColor: 'rgb(255, 99, 132)'
     }, {
-      label: 'Après ',
+      label: 'Avec les paramètres actuels ',
       data:data_after,
       fill: true,
-      backgroundColor: 'rgba(54, 162, 235, 0.2)',
+      backgroundColor: datasetColors[2],
       borderColor: 'rgb(54, 162, 235)',
       pointBackgroundColor: 'rgb(54, 162, 235)',
       pointBorderColor: '#fff',
@@ -408,6 +471,65 @@ export const SummaryBoxSpecialEcosystemique = ({ item, widthGiven }) => {
             data={chartData}
             width={widthGiven}
           />
+        </div>
+      </div>
+    </Box>
+  );
+};
+
+export const SummaryBoxSpecialEconomique_2 = ({ item, widthGiven }) => {
+
+  const data = []
+  const data_labels = []
+
+  for (let i = 2; i < item.length; i++) {
+    data.push(item[i].value)
+    data_labels.push(item[i].title)
+  }
+
+  const chartOptions = {
+    responsive: true,
+    scales: {
+      xAxis: {
+        display: true,
+      },
+      yAxis: {
+        display: true,
+      },
+    },
+    plugins: {
+      legend: {
+        display: true,
+      },
+    },
+    elements: {
+      point: {
+        radius: 1,
+      },
+    },
+  };
+
+  const chartData = {
+    labels: data_labels,
+    datasets: [
+      {
+        label: 'Avec les paramètres actuels',
+        data: data,
+        borderColor: "white",
+        tension: 0.5,
+        backgroundColor: datasetColors,
+
+      },
+
+    ],
+  };
+  return (
+    <Box>
+      <div className="summary-box-special">
+        <div className="summary-box-special__title">{item.title}</div>
+        <div className="summary-box-special__value">{item.value}</div>
+        <div className="summary-box-special__chart">
+          <Pie options={chartOptions} data={chartData} width={widthGiven} />
         </div>
       </div>
     </Box>

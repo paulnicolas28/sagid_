@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { SummaryBoxSpecialEconomique } from "../summary-box/SummaryBox";
+import { SummaryBoxSpecialEconomique,  SummaryBoxSpecialEconomique_2} from "../summary-box/SummaryBox";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEuroSign } from "@fortawesome/free-solid-svg-icons";
 import { Tabs, Tab } from "@mui/material";
@@ -17,7 +17,7 @@ const StyledTab = styled(Tab)(({ theme }) => ({
   },
 }));
 
-const EcoSystMainCard = ({ currentData }) => {
+const EcoSystMainCard = ({ currentData, visible }) => {
   const [activeTab, setActiveTab] = useState(0);
 
   const handleTabChange = (event, newValue) => {
@@ -40,23 +40,12 @@ const EcoSystMainCard = ({ currentData }) => {
             >
               <StyledTab
                 label={
-                  currentData.indicateurs_economiques[0].value +
-                  "  " +
-                  currentData.indicateurs_economiques[0].title
+                  "Evolution des coûts d'entretien"
                 }
               />
               <StyledTab
                 label={
-                  currentData.indicateurs_economiques[1].value +
-                  "  " +
-                  currentData.indicateurs_economiques[1].title
-                }
-              />
-              <StyledTab
-                label={
-                  currentData.indicateurs_economiques[2].value +
-                  "  " +
-                  currentData.indicateurs_economiques[2].title
+                  "Détail des coûts d'entretien"
                 }
               />
             </Tabs>
@@ -69,13 +58,7 @@ const EcoSystMainCard = ({ currentData }) => {
               />
             )}
             {activeTab === 1 && (
-              <SummaryBoxSpecialEconomique
-                item={currentData.indicateurs_economiques}
-                widthGiven={"500px"}
-              />
-            )}
-            {activeTab === 2 && (
-              <SummaryBoxSpecialEconomique
+              <SummaryBoxSpecialEconomique_2
                 item={currentData.indicateurs_economiques}
                 widthGiven={"500px"}
               />

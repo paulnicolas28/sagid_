@@ -11,7 +11,7 @@ import { faInfoCircle, faLeaf } from "@fortawesome/free-solid-svg-icons";
 
 import "./ecosystemique.scss";
 
-const EcoSystMainCard = ({ currentData }) => {
+const EcoSystMainCard = ({ currentData, visible }) => {
   return (
     <div className="ecosystemique">
       <FontAwesomeIcon icon={faLeaf} />
@@ -26,7 +26,7 @@ const EcoSystMainCard = ({ currentData }) => {
                 <div key={`summary-${index}`}
                   className="col-6 col-md-6 col-sm-12"
                 >
-                    <SummaryBoxIndicateursLogo item={item} currentData={currentData} index={index}/>
+                    <SummaryBoxIndicateursLogo item={item} currentData={currentData} index={index} visible={visible}/>
                 </div>
               ))}
               </div>
@@ -42,7 +42,7 @@ const EcoSystMainCard = ({ currentData }) => {
                     key={`summary-${index}`}
                     className="col-3 col-md-6 col-sm-12"
                   >
-                    <SummaryBoxIndicateursLogo item={item} currentData={currentData} index={index}/>
+                    <SummaryBoxIndicateursLogo item={item} currentData={currentData} index={index} visible={visible}/>
                   </div>
                 ))}
               </div>

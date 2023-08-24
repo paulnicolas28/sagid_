@@ -143,7 +143,7 @@ const data = {
     indicateurs_ges: [
         {
             title:"émises lors de l'entretien des bords de route",
-            new_york: 1000,
+            new_york: 8,
             subtitle: "soit l'équivalent de" ,
             subtitle_2: "allers retours Paris - New York",
             unit: "kg CO2e",
@@ -375,6 +375,6 @@ const data = {
 }
 
 
-//const jsonData = JSON.stringify(data, null, 2);
-//const fs = require('fs');
-//fs.writeFileSync('data.json', jsonData);
+// const jsonData = JSON.stringify(data, null, 2);
+// const fs = require('fs');
+// fs.writeFileSync('data.json', jsonData);

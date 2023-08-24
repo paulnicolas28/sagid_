@@ -82,4 +82,52 @@ const SliderTextFieldForm = ({ id, onChange }) => {
   );
 };
 
+
+export const SliderTextFieldForm_Terri = ({ id, onChange }) => {
+  const [sliderValue, setSliderValue] = useState(0);
+  const [textFieldValue, setTextFieldValue] = useState("0");
+
+  const handleSliderChange = (event, newValue) => {
+    setSliderValue(newValue);
+    setTextFieldValue(newValue.toString());
+    onChange(id, newValue);
+  };
+
+  const handleTextFieldChange = (event) => {
+    setTextFieldValue(event.target.value);
+    const parsedValue = parseInt(event.target.value);
+    if (!isNaN(parsedValue)) {
+      setSliderValue(parsedValue);
+      onChange(id, parsedValue);
+    }
+  };
+
+  return (
+      <div className="row">
+        <div className="col-6">
+          <StyledFormControl>
+            <StyledNumberInput
+              type="number"
+              value={textFieldValue}
+              onChange={handleTextFieldChange}
+              variant="outlined"
+            />
+          </StyledFormControl>
+        </div>
+        <div className="col-6">
+          <StyledFormControl>
+            <StyledSlider
+              value={sliderValue}
+              onChange={handleSliderChange}
+              min={0}
+              max={10000}
+              step={100}
+            />
+          </StyledFormControl>
+        </div>
+      </div>
+  );
+};
+
+
 export default SliderTextFieldForm;

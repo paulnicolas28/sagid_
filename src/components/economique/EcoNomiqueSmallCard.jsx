@@ -1,12 +1,12 @@
 import React from "react";
-import SummaryBox, { SummaryBoxIndicateurs, SummaryBoxSpecial, SummaryBoxNotes,  SummaryBoxSpecialEconomique  } from "../summary-box/SummaryBox";
+import SummaryBox, { SummaryBoxIndicateurs, SummaryBoxSpecial, SummaryBoxNotes,  SummaryBoxSpecialEconomique, SummaryBoxNotesEco  } from "../summary-box/SummaryBox";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEuroSign } from '@fortawesome/free-solid-svg-icons'
 
 import "./economique.scss";
 
 
-const EcoNomiqueSmallCard = ({ currentData }) => {
+const EcoNomiqueSmallCard = ({ currentData, visible }) => {
   return (
     <div className="economique">
         <FontAwesomeIcon icon={faEuroSign}/>
@@ -16,10 +16,10 @@ const EcoNomiqueSmallCard = ({ currentData }) => {
         <div className="col-12 col-md-12">
           <div className="row">
           <div className="col-6 hide-md">
-            <SummaryBoxNotes item={currentData.indicateurs_economiques} /> 
+            <SummaryBoxNotesEco item={currentData.indicateurs_economiques} visible={visible} /> 
           </div>
           <div className="col-6 hide-md">
-            <SummaryBoxSpecialEconomique item={currentData.indicateurs_economiques}  widthGiven={"250px"}/>
+            <SummaryBoxSpecialEconomique item={currentData.indicateurs_economiques}  widthGiven={"350px"}/>
           </div>
           </div>
         </div>
