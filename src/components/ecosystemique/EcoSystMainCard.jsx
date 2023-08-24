@@ -7,7 +7,7 @@ import SummaryBox, {
 } from "../summary-box/SummaryBox";
 import Box from "../box/Box";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLeaf } from "@fortawesome/free-solid-svg-icons";
+import { faInfoCircle, faLeaf } from "@fortawesome/free-solid-svg-icons";
 
 import "./ecosystemique.scss";
 
@@ -26,11 +26,15 @@ const EcoSystMainCard = ({ currentData }) => {
                 <div key={`summary-${index}`}
                   className="col-6 col-md-6 col-sm-12"
                 >
-                  <SummaryBoxIndicateurs item={item} />
+                    <SummaryBoxIndicateursLogo item={item} currentData={currentData} index={index}/>
                 </div>
               ))}
               </div>
             </Box>
+            <div class="tooltip-container">
+              <h3>Indicateurs écosystémiques <FontAwesomeIcon icon={faInfoCircle}></FontAwesomeIcon> </h3>
+              <span class="tooltip">Cliquer sur chaque indicateur pour obtenir plus d'informations ! </span>
+            </div>
             <Box>
               <div className="row">
                 {currentData.indicateurs_ecosysteme.map((item, index) => (

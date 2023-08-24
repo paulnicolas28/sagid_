@@ -1,78 +1,41 @@
 const data = {
-    revenueSummary: {
-        title: 'Emission par activité',
-        value: 400 + ' tCO2e',
-        chartData: {
-            labels: ['May', 'Jun', 'July', 'Aug', 'May', 'Jun', 'July', 'Aug'],
-            data: [1, 2, 3, 1, 5, 4, 3]
-        }
-    },
-
-    // impactEcosysteme: [
-    //     {
-    //     labels: [ 'Qualité du sol', 'Biodiversité', 'Hydrologique', 'Brise-vent et diminution des températures', 'Stockage du carbone', "Qualité de l'air", 'Risques naturels' ],
-    //     title: 'Avant l\'entretien',
-    //     chartData: {
-    //         data: {     
-    //         values: [1, 2, 3, 1, 5, 4, 3]
-    //             },
-    //         },
-    //     },
-    //     {
-    //     title: 'Après l\'entretien',
-    //     chartData: {
-    //         data: {     
-    //         values: [1, 2, 3, 1, 5, 4, 3]
-    //             },
-    //         },
-    //     },
-    // ],
-
-    coutsEconomiques: {
-        title: 'Coûts économiques',
-        value: '3.261.000€',
-        chartData: {
-            labels: ['2023', '2024', '2025', '2026', '2027', '2028', '2029'],
-            data: [300, 300, 280, 150, 100, 120, 110]
-        }        
-    },
             
     indicateurs_economiques: [
         {
             title:"de coûts d'entretien",
-            value: 3261000 + "€"
+            unit: "€",
         },
         {
             title:"par km entretenu",
-            value: 344 + "€"
+            value: 344,
+            value_after : 344,
+            unit: "€/km",
         },
         {
             title:"de coûts liés au fauchage",
-            value: 1845000 + "€"
+            value: 1845000,
+            value_after : 1845000,
+            unit: "€",
         },
         {
             title:"de coûts de traitement des déchets",
-            value: 421000 + "€"
+            value: 421000,
+            value_after : 421000,
+            unit: "€",
         },
         {
             title:"de revenus dus à la valorisation des déchets",
-            value: 781000 + "€"
+            value: 781000,
+            value_after : 781000,
+            unit: "€",
         },
     ],
-
-    notes_ecosysteme: [
-        { title : 'pour la capacité du réseau à fournir des services écosystémiques', 
-        value : 20 },
-        { title : "pour l'impact de l'entretien sur la capacité", 
-        value : 50 },
-    ],
-
 
     indicateurs_ecosysteme: [
         {
             title:'Qualité du sol', //'Fonction de maintien de la matière organique et de la qualité du sol',
             value: 1,
-            value_after : 2,
+            value_after : 1,
             text:"La fonction de maintien de la matière organique intègre à la fois la stabilisation des sols, le contrôle de l’érosion et la capacité de structuration des sols. Il s’agit d’évaluer la capacité du bord de route à stabiliser et structurer les sols et à contrôler l’érosion. Le contrôle de l’érosion s’intéresse au flux de matières arrachées et transportées, ce qui consiste à évaluer ce qui empêche la perte de sol fertile. La structuration du sol conditionne les capacités de stockage, de filtration et de rétention du sol et détermine la pénétrabilité des racines et la constitution de la biomasse végétale.  ",
             advices: {
                 positifs : ["Peut-être amélioré en utilisant des techniques d’entretien plus respectueuse"],
@@ -87,7 +50,7 @@ const data = {
         {
             title:'Maintien de la biodiversité', //'Fonction de maintien de la biodiversité',
             value: 2,
-            value_after : 3,
+            value_after : 2,
             text:"La fonction de maintien de la biodiversité est complexe, car les bords de route jouent à la fois un rôle de corridor écologique et de réservoir de la biodiversité. Il s’agit d’évaluer la capacité des bords de route à fournir un espace propice à la présence, au maintien et au développement de la faune et de la flore locale. Le maintien des populations animales et végétales dépend des interactions entre les différents espaces permettant le brassage génétique, l’accès aux ressources, à des milieux de reproduction et de vie. Les interactions spatiales se font ente les réservoirs de biodiversité (lieux de vie et reproduction des espèces) grâce aux corridors écologiques (lieux de déplacement, de dispersion et d’accueil des espèces). Ces corridors sont les haies, talus, bandes enherbées, cours d’eau (Le Guillou 2020). ",
             advices: {
                 positifs : ["Peut-être amélioré en utilisant des techniques d’entretien plus respectueuse"],
@@ -102,7 +65,7 @@ const data = {
         {
             title:'Fonction hydrologique', //'Fonction hydrologique',
             value: 3,
-            value_after : 4,
+            value_after : 3,
             text:"La fonction hydrologique intègre des processus d’épuration de l’eau et de diminution du ruissellement. Il s’agit d’évaluer la capacité des bords de route à stocker et évacuer l’eau et à retarder le ruissellement vers les autres écosystèmes et leur capacité à restaurer/remédier l’eau. La capacité des bords de route à stocker et évacuer l’eau fait référence à la réserve utile des sols, il s’agit d’évaluer leur capacité à contenir et restituer l’eau aux racines (rétention de l’eau) pour la vie végétale. La capacité des bords de route porte sur la purification de l’eau, notamment par le biais du recyclage des nutriments et à la filtration des particules d’impuretés. ",
             advices: {
                 positifs : ["Peut-être amélioré en utilisant des techniques d’entretien plus respectueuse"],
@@ -118,7 +81,7 @@ const data = {
         {
             title:'Microclimat ', //'Fonction brise-vent et diminution des températures',
             value: 1,
-            value_after : 2,
+            value_after : 1,
             text:"Les végétaux, les sols et l’eau présents au sein de l’écosystème urbain peuvent jouer un rôle significatif dans l’abaissement des températures locales et la végétation ligneuse des bords de route joue un rôle de brise-vent. Cette fonction est très dépendante du recouvrement arboré (formation ligneuse) du bord de route, i.e. la proportion d’arbres et d’arbustes sur la portion concernée (Le Guillou 2020).  ",
             advices: {
                 positifs : ["Peut-être amélioré en utilisant des techniques d’entretien plus respectueuse"],
@@ -133,7 +96,7 @@ const data = {
         {
             title:'Stockage du carbone', //'Fonction de stockage du carbone',
             value: 5,
-            value_after : 4,
+            value_after : 5,
             text:"La fonction de stockage du carbone représente la capacité du bord de route à accumuler du carbone dans le sol et dans la végétation luttant ainsi contre le réchauffement climatique. Cette fonction est principalement dépendante du type de sol ainsi que du type de végétation présente sur le bord de route. ",
             advices: {
                 positifs : ["Peut-être amélioré en utilisant des techniques d’entretien plus respectueuse"],
@@ -148,7 +111,7 @@ const data = {
         {
             title:"Atténuation des risques naturels", //"Fonction de régulation de la qualité de l'air",
             value: 2,
-            value_after : 3,
+            value_after : 2,
             text:"L’atténuation des risques naturels concernent en majeur partie les risques d’inondations et d’incendie. L’aménagement du bord de route mais aussi son entretien vont avoir un impact sur sa capacité à limiter ces risques. ",
             advices: {
                 positifs : ["Peut-être amélioré en utilisant des techniques d’entretien plus respectueuse"],
@@ -163,7 +126,7 @@ const data = {
         {
             title:'Sécurité ', //'Fonction de régulation des nuisances et des risques naturels',
             value: 4,
-            value_after : 5,
+            value_after : 4,
             text:"L’entretien des bords de route a un impact sur la sécurité des usagers de la route. Il peut aussi bien s’agir d’automobilistes, de cyclistes que de piétons. La sécurité est assurée en limitant la hauteur de la végétation afin d’assurer la visibilité des usagers en particulier dans les zones à risque comme les virages et les intersections. L’entretien des bords de route permet également de permettre à tout usager d’emprunter le bas-côté en cas de nécessité. ",
             advices: {
                 positifs : ["Peut-être amélioré en utilisant des techniques d’entretien plus respectueuse"],
@@ -180,8 +143,39 @@ const data = {
     indicateurs_ges: [
         {
             title:"émises lors de l'entretien des bords de route",
-            subtitle: "soit l'équivalent de "+ 122 +" allers retours Paris - New York",
-            value: 8642 + ' tCO2e'
+            new_york: 1000,
+            subtitle: "soit l'équivalent de" ,
+            subtitle_2: "allers retours Paris - New York",
+            unit: "kg CO2e",
+        },
+        {
+            title:"émises lors de la valorisation des déchets",
+            value: 500,
+            value_after : 500,
+            unit: "kg CO2e",
+        },
+        {
+            title:"émises lors du fauchage en damier",
+            value: 1500,
+            value_after : 1500,
+            unit: "kg CO2e",
+        },
+        {
+            title:"émises lors du fauchage avec collecte",
+            value: 6642,
+            value_after : 6642,
+            unit: "kg CO2e",
+        },
+    ],
+
+    notes_ecosysteme: [
+        { title : 'pour la capacité du réseau à fournir des services écosystémiques', 
+        value : 20,
+        value_after : 20
+        },
+        { title : "pour l'impact de l'entretien sur la capacité", 
+        value : 50,
+        value_after : 50
         },
     ],
 
@@ -384,6 +378,3 @@ const data = {
 //const jsonData = JSON.stringify(data, null, 2);
 //const fs = require('fs');
 //fs.writeFileSync('data.json', jsonData);
-
-
-//export default data

@@ -33,29 +33,33 @@ const Entretien = ( {currentData, setCurrentData }) => {
 
 const handleSliderChange = _.debounce((id, newValue) => {
     const newCurrentData = {...currentData};
-    newCurrentData.notes_ecosysteme[0].value = newValue;
-    newCurrentData.notes_ecosysteme[0].value = newCurrentData.notes_ecosysteme[0].value - 10;
-    newCurrentData.notes_ecosysteme[1].value = newValue;
-    newCurrentData.notes_ecosysteme[1].value = newCurrentData.notes_ecosysteme[1].value + 10;
-    newCurrentData.coutsEconomiques.chartData.data[0] = newValue + 150;
-    newCurrentData.coutsEconomiques.chartData.data[1] = newValue + 100;
-    newCurrentData.coutsEconomiques.chartData.data[2] = newValue + 200;
-    newCurrentData.revenueSummary.chartData.data[0] = newValue + 200;
-    newCurrentData.revenueSummary.chartData.data[1] = newValue + 100;
-    newCurrentData.revenueSummary.chartData.data[2] = newValue + 250;
-    newCurrentData.revenueSummary.chartData.data[3] = newValue + 150;
-    newCurrentData.revenueSummary.chartData.data[4] = newValue + 50;
-
-    //Calcul pour le RadarChart
-
-    //const aux = newCurrentData.impactEcosysteme[1].chartData.data
-    //newCurrentData.impactEcosysteme[1].chartData.data = [newValue + 1, newValue + 2, newValue -3, newValue - 4, newValue + 2, newValue -2, newValue -3];
-    //newCurrentData.impactEcosysteme[0].chartData.data = aux;
 
     //Calcul pour les indicateurs
 
+    newCurrentData.notes_ecosysteme[0].value = newCurrentData.notes_ecosysteme[0].value_after;
+    newCurrentData.notes_ecosysteme[1].value = newCurrentData.notes_ecosysteme[1].value_after;
+    newCurrentData.notes_ecosysteme[0].value_after = newValue;
+    newCurrentData.notes_ecosysteme[1].value_after = newValue;
+
     newCurrentData.indicateurs_ecosysteme.forEach(e => {
-      e.value = newValue + 1;
+      const randomValue = Math.floor(Math.random() * 5) + 1;
+      e.value = e.value_after;
+      e.value_after = randomValue;
+    });
+
+    newCurrentData.indicateurs_economiques.forEach(e => {
+      const randomValue = Math.floor(Math.random() * 1000) + 1;
+      e.value = e.value_after;
+      e.value_after = randomValue;
+    });
+
+    let sum=0;
+
+    newCurrentData.indicateurs_ges.forEach(e => {
+      const randomValue = Math.floor(Math.random() * 1000) + 1;
+      e.value = e.value_after;
+      e.value_after = randomValue;
+      sum+=e.value_after;
     });
 
     setCurrentData(newCurrentData);

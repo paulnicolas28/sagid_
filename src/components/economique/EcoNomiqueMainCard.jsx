@@ -64,19 +64,19 @@ const EcoSystMainCard = ({ currentData }) => {
           <div className="col-9">
             {activeTab === 0 && (
               <SummaryBoxSpecialEconomique
-                item={currentData.coutsEconomiques}
+                item={currentData.indicateurs_economiques}
                 widthGiven={"500px"}
               />
             )}
             {activeTab === 1 && (
               <SummaryBoxSpecialEconomique
-                item={currentData.revenueSummary}
+                item={currentData.indicateurs_economiques}
                 widthGiven={"500px"}
               />
             )}
             {activeTab === 2 && (
               <SummaryBoxSpecialEconomique
-                item={currentData.coutsEconomiques}
+                item={currentData.indicateurs_economiques}
                 widthGiven={"500px"}
               />
             )}

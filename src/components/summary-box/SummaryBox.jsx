@@ -2,7 +2,7 @@ import React from "react";
 import "./summary-box.scss";
 import Box from "../box/Box";
 
-import { Line, Bar, Doughnut, Radar, PolarArea } from "react-chartjs-2";
+import { Line, Bar, Doughnut, Radar, PolarArea, Pie } from "react-chartjs-2";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -23,7 +23,7 @@ import { Button } from "@mui/material";
 import InfoCard from './InfoCard';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLeaf, faPlusCircle, faMinusCircle, faArrowDown, faArrowUpRightFromSquare, faArrowUpLong} from "@fortawesome/free-solid-svg-icons";
+import { faLeaf, faPlusCircle, faMinusCircle, faArrowDown, faArrowUpRightFromSquare, faArrowUpLong, faArrowRight} from "@fortawesome/free-solid-svg-icons";
 
 import { useState } from 'react';
 
@@ -69,156 +69,12 @@ export const SummaryBoxIndicateurs = ({ item }) => {
   );
 };
 
-// export const SummaryBoxIndicateursLogo = ({ item }) => {
-//   const [isCardOpen, setIsCardOpen] = useState(false);
-
-//   const [isHovered, setIsHovered] = useState(false);
-
-//   const toggleCard = () => {
-//     setIsCardOpen(!isCardOpen);
-//   };
-
-//   return (
-//     <Box>
-//       <div className={`summary-box ${isCardOpen ? 'open' : 'close'}`}>
-//         <div className="summary-box__info__indicateur">
-//         <div
-//             className={`summary-box__info__indicateur__value ${isHovered ? 'hovered' : ''}`}
-//             onMouseEnter={() => setIsHovered(true)}
-//             onMouseLeave={() => setIsHovered(false)}
-//           >
-//             <FontAwesomeIcon icon={faLeaf} />
-//             {isHovered && <span className="hover-text"> </span>}
-//           </div>
-//           <div className="summary-box__info__indicateur__title">
-//             <CircleBox item={item} />
-//           </div>
-
-//           <button className="toggle-button" onClick={toggleCard}>
-//             {isCardOpen ? 'Close' : 'Open'} More Info
-//           </button>
-//           {isCardOpen && (
-//             <div className="more-info">
-//               {/* Add your additional information here */}
-//               <div className="row">
-//             <div className="col-6">
-//               <div className="summary-box__info__indicateur__value">
-//                 <FontAwesomeIcon icon={faPlusCircle} />
-//                 <span className="hover-text">Collecte</span>
-//               </div>
-//             </div>
-//             <div className="col-6">
-//               <div className="summary-box__info__indicateur__value">
-//                 <FontAwesomeIcon icon={faMinusCircle} />
-//                 <span className="hover-text">Test</span>
-//               </div>
-//             </div>
-//           </div>
-//             </div>
-//           )}
-//         </div>
-//       </div>
-//     </Box>
-//   );
-// };
-
-// export const SummaryBoxIndicateursLogo = ({ item }) => {
-//   const [isModalOpen, setIsModalOpen] = useState(false);
-
-//   const toggleModal = () => {
-//     setIsModalOpen(!isModalOpen);
-//   };
-
-//   return (
-//     <div>
-//       <div className="summary-box">
-//         <div className="summary-box__info__indicateur">
-//           <div className="summary-box__info__indicateur__value" onClick={toggleModal}>
-//             <span className="hover-text">{item.title}</span>
-//           </div>
-//           <div className="summary-box__info__indicateur__title">
-//             <CircleBox item={item} />
-//           </div>
-//         </div>
-//       </div>
-
-//       {isModalOpen && (
-//         <div className="modal-overlay">
-//           <div className="modal">
-//             <div className="modal-content">
-//               {/* Add your additional information here */}
-//               <div className="row">
-//                 <div className="col-6">
-//                   <div className="summary-box__info__indicateur__value">
-//                     <FontAwesomeIcon icon={faPlusCircle} />
-//                     <Typography className="hover-text">Collecte</Typography>
-//                   </div>
-//                 </div>
-//                 <div className="col-6">
-//                   <div className="summary-box__info__indicateur__value">
-//                     <FontAwesomeIcon icon={faMinusCircle} />
-//                     <Typography className="hover-text">Méthanisation</Typography>
-//                   </div>
-//                 </div>
-//               </div>
-//               <button className="close-button" onClick={toggleModal}>
-//                 Fermer
-//               </button>
-//             </div>
-//           </div>
-//         </div>
-//       )}
-//     </div>
-//   );
-// };
-
-// export const SummaryBoxIndicateursLogo = ({ item, currentData }) => {
-//   const [isModalOpen, setIsModalOpen] = useState(false);
-
-//   const toggleModal = () => {
-//     setIsModalOpen(!isModalOpen);
-//   };
-
-//   console.log(currentData.impactEcosysteme[0].chartData.data.values)
-
-//   return (
-//     <div>
-//       <div className="summary-box">
-//         <div className="summary-box__info__indicateur">
-//           <div className="summary-box__info__indicateur__value" onClick={toggleModal}>
-//             <span className="hover-text">{item.title}</span>
-//             <FontAwesomeIcon icon={faArrowUpLong} bounce style={{color: "#00ff00",}} />
-//             <FontAwesomeIcon icon={faArrowDown} bounce style={{color: " #FF0000",}} />
-//             <sup> {currentData.impactEcosysteme[0].chartData.data.values[0]}</sup>
-//           </div>
-//           <div className="summary-box__info__indicateur__title">
-//             <CircleBox item={item} />
-//           </div>
-//         </div>
-//       </div>
-
-//       {isModalOpen && (
-//         <InfoCard
-//           title={item.title}
-//           text={item.text}
-//           list={item.list}
-//           onClose={toggleModal} // Pass the toggleModal function to close the modal
-//         />
-//       )}
-//     </div>
-//   );
-// };
-
-
 export const SummaryBoxIndicateursLogo = ({ item, currentData, index }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
   };
-
-
-
   return (
 <div>
   <div className="summary-box">
@@ -230,17 +86,22 @@ export const SummaryBoxIndicateursLogo = ({ item, currentData, index }) => {
             <FontAwesomeIcon icon={faArrowDown} bounce style={{ color: "#ff0000" }} />
             <sup> - {item.value - item.value_after} </sup>
           </>
-        ) : (
+        ) : item.value_after > item.value ? (
           <>
             <FontAwesomeIcon icon={faArrowUpLong} bounce style={{ color: "#00ff00" }} />
             <sup> + {item.value_after - item.value} </sup>
+          </>
+        ) : (
+          // Display an arrow to the right when item.value_after equals item.value
+          <>
+            <FontAwesomeIcon icon={faArrowRight} bounce style={{ color: "#0000ff" }} />
+            <sup> 0 </sup>
           </>
         )}
         <CircleBox item={item} />
       </div>
     </div>
-  </div>
-  
+  </div>  
       {isModalOpen && (
         <InfoCard
           title={item.title}
@@ -256,15 +117,48 @@ export const SummaryBoxIndicateursLogo = ({ item, currentData, index }) => {
       };    
 
 export const SummaryBoxNotes = ({ item }) => {
+
+  let value_sum = 0;
+  let value_sum_after = 0;
+  let percent = 0;
+
+  for (let i = 1; i < item.length; i++) {
+    value_sum += item[i].value;
+    value_sum_after += item[i].value_after;
+  }
+
+  percent = Math.round((value_sum_after - value_sum) / value_sum * 100);
+
   return (
     <Box>
       <div className="summary-box">
         <div className="summary-box__info__indicateur">
           <div className="summary-box__info__indicateur__title">
-            {item.value}
+            Avant : {value_sum} {item[0].unit} <br />
+            Après : {value_sum_after} {item[0].unit} <br />
+            Pourcent : {percent} %
+
+            {value_sum < value_sum_after ? (
+          <>
+            <FontAwesomeIcon icon={faArrowDown} bounce style={{ color: "#ff0000" }} />
+            <sup> - {value_sum - value_sum_after} </sup>
+          </>
+        ) : value_sum_after > value_sum ? (
+          <>
+            <FontAwesomeIcon icon={faArrowUpLong} bounce style={{ color: "#00ff00" }} />
+            <sup> + {value_sum_after - value_sum} </sup>
+          </>
+        ) : (
+          // Display an arrow to the right when item.value_after equals item.value
+          <>
+            <FontAwesomeIcon icon={faArrowRight} bounce style={{ color: "#0000ff" }} />
+            <sup> 0 </sup>
+          </>
+        )}
+
           </div>
           <div className="summary-box__info__indicateur__value">
-            {item.title}
+            {item[0].title} 
           </div>
         </div>
       </div>
@@ -292,20 +186,39 @@ export const SummaryBoxNotesBtn = ({ item }) => {
   );
 };
 
+const datasetColors = [
+  '#8624DB',
+  '#FF9066',
+  '#3F51B5',
+  '#fff',
+  '#4CAF50',
+  '#DB190C',
+  '#FFEB3B',];
+
 export const SummaryBoxSpecialGES = ({ item }) => {
+  const data = []
+  const data_after = []
+  const data_labels = []
+
+  for (let i = 1; i < item.length; i++) {
+    data.push(item[i].value)
+    data_after.push(item[i].value_after)
+    data_labels.push(item[i].title)
+  }
+
   const chartOptions = {
     responsive: true,
     scales: {
       xAxis: {
-        display: true,
+        display: false,
       },
       yAxis: {
-        display: true,
+        display: false,
       },
     },
     plugins: {
       legend: {
-        display: false,
+        display: true,
       },
     },
     elements: {
@@ -316,14 +229,19 @@ export const SummaryBoxSpecialGES = ({ item }) => {
   };
 
   const chartData = {
-    labels: item.chartData.labels,
+    labels: data_labels,
     datasets: [
       {
         label: "Revenue",
-        data: item.chartData.data,
-        borderColor: "blue",
+        data: data,
         tension: 0.5,
-        backgroundColor: "#FF9066",
+        backgroundColor: datasetColors,
+      },
+      {
+        label: "Revenue After",
+        data: data_after,
+        tension: 0.5,
+        backgroundColor: datasetColors,
       },
     ],
   };
@@ -333,7 +251,7 @@ export const SummaryBoxSpecialGES = ({ item }) => {
         <div className="summary-box-special__title">{item.title}</div>
         <div className="summary-box-special__value">{item.value}</div>
         <div className="summary-box-special__chart">
-          <Bar options={chartOptions} data={chartData} width={`250px`} />
+          <Doughnut options={chartOptions} data={chartData} width={`250px`} />
         </div>
       </div>
     </Box>
@@ -341,6 +259,17 @@ export const SummaryBoxSpecialGES = ({ item }) => {
 };
 
 export const SummaryBoxSpecialEconomique = ({ item, widthGiven }) => {
+
+  const data = []
+  const data_after = []
+  const data_labels = []
+
+  for (let i = 1; i < item.length; i++) {
+    data.push(item[i].value)
+    data_after.push(item[i].value_after)
+    data_labels.push(item[i].title)
+  }
+
   const chartOptions = {
     responsive: true,
     scales: {
@@ -353,26 +282,35 @@ export const SummaryBoxSpecialEconomique = ({ item, widthGiven }) => {
     },
     plugins: {
       legend: {
-        display: false,
+        display: true,
       },
     },
     elements: {
       point: {
-        radius: 0,
+        radius: 1,
       },
     },
   };
 
   const chartData = {
-    labels: item.chartData.labels,
+    labels: data_labels,
     datasets: [
       {
         label: "Revenue",
-        data: item.chartData.data,
+        data: data,
         borderColor: "blue",
         tension: 0.5,
-        backgroundColor: "#6fa8dc",
+        backgroundColor: "blue",
+
       },
+      {
+         label: "Revenue After",
+         data: data_after,
+         borderColor: "blue",
+         tension: 0.5,
+         backgroundColor: "#FF9066",
+
+       }
     ],
   };
   return (
@@ -392,14 +330,16 @@ export const SummaryBoxSpecialEcosystemique = ({ item, widthGiven }) => {
 
   const data = []
   const data_after = []
+  const data_labels = []
 
   for (let i = 0; i < item.length; i++) {
     data.push(item[i].value)
     data_after.push(item[i].value_after)
+    data_labels.push(item[i].title)
   }
 
   const chartData = {
-    labels: [ 'Qualité du sol', 'Biodiversité', 'Hydrologique', 'Brise-vent et diminution des températures', 'Stockage du carbone', "Qualité de l'air", 'Risques naturels' ],
+    labels: data_labels,
     datasets: [{
       label: 'Avant ',
       data: data,

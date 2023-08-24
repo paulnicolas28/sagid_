@@ -17,7 +17,7 @@ const GESMainCard = ( {currentData} ) => {
               <SummaryBoxNotesBtn item={currentData.indicateurs_ges[0]} /> 
             </div>
             <div className="col-6 hide-md">
-              <SummaryBoxSpecialGES item={currentData.revenueSummary} widthGiven={"500px"}/>
+              <SummaryBoxSpecialGES item={currentData.indicateurs_ges} widthGiven={"500px"}/>
             </div>
           </div>
         </div>

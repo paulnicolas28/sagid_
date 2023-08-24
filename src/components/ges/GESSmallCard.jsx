@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSmog } from '@fortawesome/free-solid-svg-icons'
 
 import "./ges.scss";
+import { Typography } from "@mui/material";
 
 const GESSmallCard = ( {currentData} ) => {
   return (
@@ -15,10 +16,13 @@ const GESSmallCard = ( {currentData} ) => {
         <div className="col-12 col-md-12">
           <div className="row">
           <div className="col-6 hide-md">
-            <SummaryBoxNotes item={currentData.indicateurs_ges[0]} />
+            <SummaryBoxNotes item={currentData.indicateurs_ges} />
+            <Typography variant="body2" gutterBottom> 
+            {currentData.indicateurs_ges[0].subtitle} {currentData.indicateurs_ges[0].new_york} {currentData.indicateurs_ges[0].subtitle_2}
+            </Typography>
           </div>
           <div className="col-6 hide-md">
-            <SummaryBoxSpecialGES item={currentData.revenueSummary} />
+            <SummaryBoxSpecialGES item={currentData.indicateurs_ges} />
           </div>
           </div>
         </div>

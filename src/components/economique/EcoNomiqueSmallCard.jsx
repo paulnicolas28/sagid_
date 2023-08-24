@@ -16,11 +16,10 @@ const EcoNomiqueSmallCard = ({ currentData }) => {
         <div className="col-12 col-md-12">
           <div className="row">
           <div className="col-6 hide-md">
-            <SummaryBoxNotes item={currentData.indicateurs_economiques[0]} />
-            <SummaryBoxNotes item={currentData.indicateurs_economiques[1]} />
+            <SummaryBoxNotes item={currentData.indicateurs_economiques} /> 
           </div>
           <div className="col-6 hide-md">
-            <SummaryBoxSpecialEconomique item={currentData.coutsEconomiques}  widthGiven={"250px"}/>
+            <SummaryBoxSpecialEconomique item={currentData.indicateurs_economiques}  widthGiven={"250px"}/>
           </div>
           </div>
         </div>

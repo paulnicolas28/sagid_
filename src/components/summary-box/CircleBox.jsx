@@ -34,7 +34,7 @@ const getColorForValue = (value) => {
 const MyComponent = ({item}) => {
   return (
     <Box>
-        <CircleBox value={item.value}> {item.value} </CircleBox>
+        <CircleBox value={item.value_after}> {item.value_after} </CircleBox>
     </Box>
     );
 };

@@ -77,3 +77,24 @@
         font-weight: 700;
     }
 }
+
+/* CSS */
+.avant-value {
+    opacity: 1;
+    transition: opacity 0.5s ease; /* Adjust the duration and timing function as needed */
+  }
+  
+  .avant-value.hidden {
+    opacity: 0;
+    pointer-events: none; /* Prevent interactions with hidden elements */
+  }
+  
+  .apres-value {
+    opacity: 0;
+    transition: opacity 0.5s ease; /* Adjust the duration and timing function as needed */
+  }
+  
+  .apres-value.visible {
+    opacity: 1;
+  }
+  

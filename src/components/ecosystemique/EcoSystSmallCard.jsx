@@ -30,7 +30,7 @@ const EcoSystSmallCard = ({ currentData }) => {
           </div>
           <div className="col-6 hide-md">
             <h3>Impacts sur les services écosystémiques des bords de route</h3>
-            <SummaryBoxSpecialEcosystemique item={currentData.revenueSummary} widthGiven={"500px"}/>
+            <SummaryBoxSpecialEcosystemique item={currentData.indicateurs_ecosysteme} widthGiven={"500px"}/>
           </div>
         </div>
       </div>

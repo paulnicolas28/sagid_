@@ -1,8 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './infocard.scss';
 import Typography from '@material-ui/core/Typography';
 
-const InfoCard = ({ title, text, list, advice, onClose  }) => {
+const InfoCard = ({ title, text, list, advice, onClose }) => {
+  // Function to handle keyboard events
+  const handleKeyPress = (event) => {
+    if (event.key === 'Escape' ) {
+      onClose();
+    }
+  };
+
+  // Add event listener when the component mounts
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyPress);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener('keydown', handleKeyPress);
+    };
+  }, [onClose]);
+
   return (
     <div className="external-popup">
       <div className="external-popup__content">
@@ -27,7 +44,7 @@ const InfoCard = ({ title, text, list, advice, onClose  }) => {
             <li> - {advice["positifs"]}</li>
             <li> - {advice["negatifs"]}</li>
           </ul>
-          </div>
+        </div>
       </div>
     </div>
   );
