@@ -378,3 +378,5 @@ const data = {
 // const jsonData = JSON.stringify(data, null, 2);
 // const fs = require('fs');
 // fs.writeFileSync('data.json', jsonData);
+
+export default data;

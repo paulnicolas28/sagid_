@@ -18,46 +18,56 @@ const StyledTab = styled(Tab)(({ theme }) => ({
 }));
 
 const EcoSystMainCard = ({ currentData, visible }) => {
+  // Declare and initialize a state variable 'activeTab' using the 'useState' hook.
+  // 'activeTab' keeps track of the currently selected tab.
   const [activeTab, setActiveTab] = useState(0);
 
+  // Define a function 'handleTabChange' that updates the 'activeTab' state variable
+  // when a new tab is selected.
   const handleTabChange = (event, newValue) => {
     setActiveTab(newValue);
   };
 
+  // Render the component's content.
   return (
     <div className="economique eco-main">
+      {/* Render a FontAwesomeIcon with the Euro sign */}
       <FontAwesomeIcon icon={faEuroSign} />
       <h1>Aspect économique</h1>
       <h3>Bilan Global</h3>
       <div className="col-12 col-md-12">
         <div className="row">
           <div className="col-3">
+            {/* Render vertical tabs with 'activeTab' controlled by 'value' prop */}
             <Tabs
               orientation="vertical"
               variant="scrollable"
               value={activeTab}
-              onChange={handleTabChange}
+              onChange={handleTabChange} // Handle tab changes with 'handleTabChange' function
             >
               <StyledTab
                 label={
-                  "Evolution des coûts d'entretien"
+                  "Evolution des coûts d'entretien" // Label for the first tab
                 }
               />
               <StyledTab
                 label={
-                  "Détail des coûts d'entretien"
+                  "Détail des coûts d'entretien" // Label for the second tab
                 }
               />
             </Tabs>
           </div>
           <div className="col-9">
+            {/* Render content based on the selected tab */}
             {activeTab === 0 && (
+              // Render SummaryBoxSpecialEconomique if the first tab is active
               <SummaryBoxSpecialEconomique
                 item={currentData.indicateurs_economiques}
                 widthGiven={"500px"}
               />
             )}
             {activeTab === 1 && (
+              // Render SummaryBoxSpecialEconomique_2 if the second tab is active
               <SummaryBoxSpecialEconomique_2
                 item={currentData.indicateurs_economiques}
                 widthGiven={"500px"}
@@ -70,4 +80,5 @@ const EcoSystMainCard = ({ currentData, visible }) => {
   );
 };
 
+// Export the EcoSystMainCard component as the default export.
 export default EcoSystMainCard;

@@ -2,7 +2,7 @@ import React from "react";
 import "./summary-box.scss";
 import Box from "../box/Box";
 
-import { Line, Bar, Doughnut, Radar, PolarArea, Pie } from "react-chartjs-2";
+import {Bar, Doughnut, Radar, Pie } from "react-chartjs-2";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -18,12 +18,12 @@ import {
 } from "chart.js";
 
 import CircleBox from "./CircleBox";
-import { Button, colors } from "@mui/material";
+import { Button } from "@mui/material";
 
 import InfoCard from './InfoCard';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLeaf, faPlusCircle, faMinusCircle, faArrowDown, faArrowUpRightFromSquare, faArrowUpLong, faArrowRight} from "@fortawesome/free-solid-svg-icons";
+import {faArrowDown, faArrowUpLong, faArrowRight} from "@fortawesome/free-solid-svg-icons";
 
 import { useState } from 'react';
 

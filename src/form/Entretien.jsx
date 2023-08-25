@@ -27,73 +27,98 @@ const StyledFormControl = styled(FormControl)({
 });
 
 const Entretien = ( {currentData, setCurrentData, setVisible }) => {
-  const [selectedOption1, setSelectedOption1] = useState('differencie');
-  const [selectedOption2, setSelectedOption2] = useState('lutte');
 
-  const handleOption1Change = _.debounce((event) => {
-    setSelectedOption1(event.target.value);
-    const newCurrentData = {...currentData};
+// Initialize state variables for selected options with default values
+const [selectedOption1, setSelectedOption1] = useState('differencie'); // Default value is 'differencie'
+const [selectedOption2, setSelectedOption2] = useState('lutte'); // Default value is 'lutte'
 
-    newCurrentData.indicateurs_ecosysteme.forEach(e => {
-      const randomValue = Math.floor(Math.random() * 5) + 1;
-      e.value = e.value_after;
-      e.value_after = randomValue;
-    });
 
-    setCurrentData(newCurrentData);
-    setVisible(true);
-  }, 400);
+// This function handles changes in Option 1 selection
+const handleOption1Change = _.debounce((event) => {
+  // Update the selected option with the value from the event
+  setSelectedOption1(event.target.value);
+  
+  // Create a copy of the current data
+  const newCurrentData = { ...currentData };
 
-  const handleOption2Change = _.debounce((event) => {
-    setSelectedOption2(event.target.value);
-    const newCurrentData = {...currentData};
+  // Update values in the 'indicateurs_ecosysteme' array with random values
+  newCurrentData.indicateurs_ecosysteme.forEach(e => {
+    const randomValue = Math.floor(Math.random() * 5) + 1;
+    e.value = e.value_after;
+    e.value_after = randomValue;
+  });
 
-    newCurrentData.indicateurs_ecosysteme.forEach(e => {
-      const randomValue = Math.floor(Math.random() * 5) + 1;
-      e.value = e.value_after;
-      e.value_after = randomValue;
-    });
+  // Update the current data with the modified copy
+  setCurrentData(newCurrentData);
 
-    setCurrentData(newCurrentData);
-    setVisible(true);
-  }, 400);
+  // Set the 'visible' state to true
+  setVisible(true);
+}, 400);
 
+// This function handles changes in Option 2 selection
+const handleOption2Change = _.debounce((event) => {
+  // Update the selected option with the value from the event
+  setSelectedOption2(event.target.value);
+
+  // Create a copy of the current data
+  const newCurrentData = { ...currentData };
+
+  // Update values in the 'indicateurs_ecosysteme' array with random values
+  newCurrentData.indicateurs_ecosysteme.forEach(e => {
+    const randomValue = Math.floor(Math.random() * 5) + 1;
+    e.value = e.value_after;
+    e.value_after = randomValue;
+  });
+
+  // Update the current data with the modified copy
+  setCurrentData(newCurrentData);
+
+  // Set the 'visible' state to true
+  setVisible(true);
+}, 400);
+
+// This function handles changes in a slider
 const handleSliderChange = _.debounce((id, newValue) => {
+  // Create a copy of the current data
+  const newCurrentData = { ...currentData };
 
-    const newCurrentData = {...currentData};
+  // Update values in the 'notes_ecosysteme' array based on the slider's new value
+  newCurrentData.notes_ecosysteme[0].value = newCurrentData.notes_ecosysteme[0].value_after;
+  newCurrentData.notes_ecosysteme[1].value = newCurrentData.notes_ecosysteme[1].value_after;
+  newCurrentData.notes_ecosysteme[0].value_after = newValue;
+  newCurrentData.notes_ecosysteme[1].value_after = newValue;
 
-    //Calcul pour les indicateurs
+  // Update values in the 'indicateurs_ecosysteme' array with random values
+  newCurrentData.indicateurs_ecosysteme.forEach(e => {
+    const randomValue = Math.floor(Math.random() * 5) + 1;
+    e.value = e.value_after;
+    e.value_after = randomValue;
+  });
 
-    newCurrentData.notes_ecosysteme[0].value = newCurrentData.notes_ecosysteme[0].value_after;
-    newCurrentData.notes_ecosysteme[1].value = newCurrentData.notes_ecosysteme[1].value_after;
-    newCurrentData.notes_ecosysteme[0].value_after = newValue;
-    newCurrentData.notes_ecosysteme[1].value_after = newValue;
+  // Update values in the 'indicateurs_economiques' array with random values
+  newCurrentData.indicateurs_economiques.forEach(e => {
+    const randomValue = Math.floor(Math.random() * 1000) + 1;
+    e.value = e.value_after;
+    e.value_after = randomValue;
+  });
 
-    newCurrentData.indicateurs_ecosysteme.forEach(e => {
-      const randomValue = Math.floor(Math.random() * 5) + 1;
-      e.value = e.value_after;
-      e.value_after = randomValue;
-    });
+  let sum = 0;
 
-    newCurrentData.indicateurs_economiques.forEach(e => {
-      const randomValue = Math.floor(Math.random() * 1000) + 1;
-      e.value = e.value_after;
-      e.value_after = randomValue;
-    });
+  // Update values in the 'indicateurs_ges' array with random values and calculate their sum
+  newCurrentData.indicateurs_ges.forEach(e => {
+    const randomValue = Math.floor(Math.random() * 1000) + 1;
+    e.value = e.value_after;
+    e.value_after = randomValue;
+    sum += e.value_after;
+  });
 
-    let sum=0;
+  // Update the current data with the modified copy
+  setCurrentData(newCurrentData);
 
-    newCurrentData.indicateurs_ges.forEach(e => {
-      const randomValue = Math.floor(Math.random() * 1000) + 1;
-      e.value = e.value_after;
-      e.value_after = randomValue;
-      sum+=e.value_after;
-    });
+  // Set the 'visible' state to true
+  setVisible(true);
+}, 400);
 
-    setCurrentData(newCurrentData);
-    setVisible(true);
-
-  }, 400);
 
   // const handleFormSubmit = _.debounce((id, newValue) => {
   //   // Handle form submission logic here
@@ -181,7 +206,6 @@ const handleSliderChange = _.debounce((id, newValue) => {
 
       <h3 component="legend">Type de fauchage</h3>
 
-      
       <FormLabel component="legend">Fauchage avec collecte (en %)</FormLabel>
       <SliderTextFieldForm id="slider1" onChange={handleSliderChange}/>
 

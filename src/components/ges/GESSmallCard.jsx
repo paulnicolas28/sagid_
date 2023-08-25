@@ -1,10 +1,9 @@
 import React from "react";
-import SummaryBox, { SummaryBoxIndicateurs, SummaryBoxSpecialGES, SummaryBoxNotes, SummaryBoxNotesGes } from "../summary-box/SummaryBox";
+import { SummaryBoxSpecialGES, SummaryBoxNotesGes } from "../summary-box/SummaryBox";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSmog } from '@fortawesome/free-solid-svg-icons'
 
 import "./ges.scss";
-import { Typography } from "@mui/material";
 
 const GESSmallCard = ( {currentData, visible} ) => {
   return (

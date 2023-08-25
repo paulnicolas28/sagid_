@@ -21,7 +21,7 @@ const StyledFormControl = styled('div')(({ theme }) => ({
 }));
 
 const StyledButton = styled(Button)(({ theme }) => ({
-  marginTop: '1.5rem', // Increase the top margin for a cuter look
+  marginTop: '1.5rem', // Increase the top margin for a better look
   borderRadius: '5px',
   backgroundColor: theme.palette.primary.main,
   color: theme.palette.primary.contrastText,

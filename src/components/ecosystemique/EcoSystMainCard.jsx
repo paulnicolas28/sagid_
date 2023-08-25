@@ -1,7 +1,5 @@
 import React from "react";
-import SummaryBox, {
-  SummaryBoxNotes,
-  SummaryBoxIndicateurs,
+import {
   SummaryBoxSpecialEcosystemique,
   SummaryBoxIndicateursLogo,
 } from "../summary-box/SummaryBox";

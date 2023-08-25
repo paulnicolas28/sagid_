@@ -11,6 +11,8 @@ const DashboardWrapper = props => {
 
 export default DashboardWrapper
 
+// Partie gauche de l'écran, contient le Header et le Main
+
 export const DashboardWrapperMain = props => {
     return (
         <div className='dashboard-wrapper__main'>
@@ -18,6 +20,8 @@ export const DashboardWrapperMain = props => {
         </div>
     )
 }
+
+// Partie droite de l'écran, contient la Sidebar
 
 export const DashboardWrapperRight = props => {
     return (

@@ -49,10 +49,7 @@ const getColorForValue = (value) => {
   } else {
     return colorScale[5]; // Green (for values >= 80)
   }
-
 };
-
-
 
 const MyComponent = ({item}) => {
   return (

@@ -1,5 +1,5 @@
 import React from "react";
-import SummaryBox, { SummaryBoxIndicateurs, SummaryBoxSpecialEcosystemique}  from "../summary-box/SummaryBox";
+import { SummaryBoxIndicateurs, SummaryBoxSpecialEcosystemique}  from "../summary-box/SummaryBox";
 import Box from "../box/Box";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLeaf } from '@fortawesome/free-solid-svg-icons'
