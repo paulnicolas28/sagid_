@@ -25,7 +25,7 @@ const EcoSystMainCard = ({ currentData, visible }) => {
   };
 
   return (
-    <div className="economique">
+    <div className="economique eco-main">
       <FontAwesomeIcon icon={faEuroSign} />
       <h1>Aspect économique</h1>
       <h3>Bilan Global</h3>

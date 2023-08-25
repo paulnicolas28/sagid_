@@ -82,8 +82,6 @@ export const SummaryBoxIndicateurs = ({ item }) => {
 
 export const SummaryBoxIndicateursLogo = ({ item, currentData, index, visible }) => {
 
-  console.log(visible)
-
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleModal = () => {
@@ -150,13 +148,13 @@ export const SummaryBoxNotesEco = ({ item, visible }) => {
             {value_sum_after} {item[0].unit} <br />
             {value_sum < value_sum_after ? ( visible &&  
           <>
-            <FontAwesomeIcon icon={faArrowDown} bounce style={{ color: "#ff0000" }} />
-            <sup> {percent} % </sup>
-          </>
-        ) : value_sum_after > value_sum ? ( visible &&
-          <>
-            <FontAwesomeIcon icon={faArrowUpLong} bounce style={{ color: "#00ff00" }} />
+            <FontAwesomeIcon icon={faArrowUpLong} bounce style={{ color: "#ff0000" }} />
             <sup> + {percent} % </sup>
+          </>
+        ) : value_sum > value_sum_after ? ( visible &&
+          <>
+            <FontAwesomeIcon icon={faArrowDown} bounce style={{ color: "#00ff00" }} />
+            <sup>  {percent} % </sup>
           </>
         ) : ( visible &&
           // Display an arrow to the right when item.value_after equals item.value
@@ -193,17 +191,16 @@ export const SummaryBoxNotesGes = ({ item, visible }) => {
       <div className="summary-box">
         <div className="summary-box__info__indicateur">
           <div className="summary-box__info__indicateur__title">
-            {value_sum} {item[0].unit} <br />
             {value_sum_after} {item[0].unit} <br />
             {value_sum < value_sum_after ? ( visible &&
           <>
-            <FontAwesomeIcon icon={faArrowDown} bounce style={{ color: "#ff0000" }} />
-            <sup> - {percent} % </sup>
-          </>
-        ) : value_sum_after > value_sum ? ( visible &&
-          <>
-            <FontAwesomeIcon icon={faArrowUpLong} bounce style={{ color: "#00ff00" }} />
+            <FontAwesomeIcon icon={faArrowUpLong} bounce style={{ color: "#ff0000" }} />
             <sup> + {percent} % </sup>
+          </>
+        ) : value_sum > value_sum_after ? ( visible &&
+          <>
+            <FontAwesomeIcon icon={faArrowDown} bounce style={{ color: "#00ff00" }} />
+            <sup> {percent} % </sup>
           </>
         ) : ( visible &&
           // Display an arrow to the right when item.value_after equals item.value

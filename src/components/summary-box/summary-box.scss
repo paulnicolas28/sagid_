@@ -36,7 +36,8 @@
     }
 
     &__info__indicateur {
-        width: 80%;
+        width: 90%;
+        text-align: center;
         @include flex(flex-start, space-between);
         flex-direction: column;
         color: #000;
@@ -57,6 +58,7 @@
             font-size: $fontSizeSmall;
             color: $black;
             text-align: center;
+            width: 100%;
         }
 
     }
@@ -111,7 +113,7 @@
   }
 
   
-.hide{
-    display: none;
-    color: red;
-}  
+.hover{
+    width: 100%;
+
+}
